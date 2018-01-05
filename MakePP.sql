@@ -18,3 +18,24 @@ CREATE TABLE Brand
     BrandName VARCHAR2(120) NOT NULL,
     CONSTRAINT PK_Brand Primary Key (BrandId)
 );
+
+/* Nutrional values are in units of mg */
+
+CREATE TABLE FOOD
+(
+    FoodID NUMBER NOT NULL,
+    FoodName VARCHAR(120) NOT NULL,
+    Calories Number,
+    TotalFat Number,
+    Cholesterol Number,
+    Sodium Number,
+    TotalCarbs Number,
+    Protein Number,
+    VitaminA Number,
+    VitaminB Number,
+    VitaminC Number,
+    VitaminD Number,
+    Calcium Number,
+    Iron Number,
+    CONSTRAINT PK_Food Primary Key (FoodID)
+);
