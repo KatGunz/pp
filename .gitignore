@@ -22,3 +22,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### Others ###
+desktop.ini
+Git Bash.lnk
