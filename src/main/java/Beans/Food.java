@@ -1,20 +1,36 @@
 package Beans;
 import java.lang.String;
 
+@Entity
+@Table(name = "food")
 public class Food {
+    @Column(name = "foodID")
     private long foodID;
+    @Column(name = "foodName")
     private String foodName;
+    @Column(name = "calories")
     private double calories;
+    @Column(name = "totalFat")
     private double totalFat;
+    @Column(name = "cholesterol")
     private double cholesterol;
+    @Column(name = "sodium")
     private double sodium;
+    @Column(name = "totalCarbs")
     private double totalCarbs;
+    @Column(name = "protein")
     private double protein;
+    @Column(name = "vitaminA")
     private double vitaminA;
+    @Column(name = "vitaminB")
     private double vitaminB;
+    @Column(name = "vitaminC")
     private double vitaminC;
+    @Column(name = "vitaminD")
     private double vitaminD;
+    @Column(name = "calcium")
     private double calcium;
+    @Column(name = "iron")
     private double iron;
 
     public long getFoodID() {
