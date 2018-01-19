@@ -16,7 +16,8 @@ CREATE TABLE Brand
 (
     BrandId NUMBER NOT NULL,
     BrandName VARCHAR2(120) NOT NULL,
-    CONSTRAINT PK_Brand Primary Key (BrandId)
+    CONSTRAINT PK_Brand Primary Key (BrandId),
+    CONSTRAINT uniqueBrandName UNIQUE (BrandName)
 );
 
 /* Nutrional values are in units of mg */
@@ -37,7 +38,8 @@ CREATE TABLE FOOD
     VitaminD Number,
     Calcium Number,
     Iron Number,
-    CONSTRAINT PK_Food Primary Key (FoodID)
+    CONSTRAINT PK_Food Primary Key (FoodID),
+    CONSTRAINT uniqueFoodName UNIQUE (FoodName)
 );
 
 CREATE TABLE UnhealthyToHealthy
@@ -64,3 +66,15 @@ CREATE TABLE FoodToBrand
     FOREIGN KEY (FoodID) REFERENCES Food(FoodID) ON DELETE CASCADE,
     FOREIGN KEY (BrandID) REFERENCES Brand(BrandID) ON DELETE CASCADE
 );
+
+Create sequence FoodSeq start with 1
+increment by 1
+minvalue 1
+maxvalue 1000000000;
+
+Create sequence BrandSeq start with 1
+increment by 1
+minvalue 1
+maxvalue 1000000000;
+
+
