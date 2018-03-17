@@ -1,21 +1,12 @@
-DROP USER personal_proj CASCADE;
+DROP SCHEMA IF EXISTS `Personal_Project_Food`;
+CREATE SCHEMA `Personal_Project_Food`;
+USE `Personal_Project_Food`;
 
-CREATE USER personal_proj
-IDENTIFIED BY password
-DEFAULT TABLESPACE users
-TEMPORARY TABLESPACE temp
-QUOTA 10M ON users;
-
-GRANT connect to personal_proj;
-GRANT resource to personal_proj;
-GRANT create session TO personal_proj;
-GRANT create table TO personal_proj;
-GRANT create view TO personal_proj;
 
 CREATE TABLE Brand
 (
-    BrandId NUMBER NOT NULL,
-    BrandName VARCHAR2(120) NOT NULL,
+    BrandId INT NOT NULL AUTO_INCREMENT,
+    BrandName VARCHAR(120) NOT NULL,
     CONSTRAINT PK_Brand Primary Key (BrandId),
     CONSTRAINT uniqueBrandName UNIQUE (BrandName)
 );
@@ -24,28 +15,28 @@ CREATE TABLE Brand
 
 CREATE TABLE FOOD
 (
-    FoodID NUMBER NOT NULL,
+    FoodID INT NOT NULL AUTO_INCREMENT,
     FoodName VARCHAR(120) NOT NULL,
-    Calories Number,
-    TotalFat Number,
-    Cholesterol Number,
-    Sodium Number,
-    TotalCarbs Number,
-    Protein Number,
-    VitaminA Number,
-    VitaminB Number,
-    VitaminC Number,
-    VitaminD Number,
-    Calcium Number,
-    Iron Number,
+    Calories INT,
+    TotalFat INT,
+    Cholesterol INT,
+    Sodium INT,
+    TotalCarbs INT,
+    Protein INT,
+    VitaminA INT,
+    VitaminB INT,
+    VitaminC INT,
+    VitaminD INT,
+    Calcium INT,
+    Iron INT,
     CONSTRAINT PK_Food Primary Key (FoodID),
     CONSTRAINT uniqueFoodName UNIQUE (FoodName)
 );
 
 CREATE TABLE UnhealthyToHealthy
 (
-    UnhealthyFoodID NUMBER NOT NULL,
-    HealthyFoodID NUMBER NOT NULL,
+    UnhealthyFoodID INT NOT NULL,
+    HealthyFoodID INT NOT NULL,
     Constraint PK_UnhealthyToHealthy Primary Key
     (
         UnhealthyFoodID,
@@ -56,8 +47,8 @@ CREATE TABLE UnhealthyToHealthy
 );
 CREATE TABLE FoodToBrand
 (
-    FoodID NUMBER NOT NULL,
-    BrandID NUMBER NOT NULL,
+    FoodID INT NOT NULL,
+    BrandID INT NOT NULL,
     Constraint PK_FoodToBrand Primary Key
     (
         FoodID,
@@ -67,14 +58,5 @@ CREATE TABLE FoodToBrand
     FOREIGN KEY (BrandID) REFERENCES Brand(BrandID) ON DELETE CASCADE
 );
 
-Create sequence FoodSeq start with 1
-increment by 1
-minvalue 1
-maxvalue 1000000000;
-
-Create sequence BrandSeq start with 1
-increment by 1
-minvalue 1
-maxvalue 1000000000;
 
 
