@@ -58,7 +58,3 @@ CREATE TABLE FoodToBrand
     FOREIGN KEY (BrandID) REFERENCES Brand(BrandID) ON DELETE CASCADE
 );
 
-set auto_increment_increment = 1;
-set auto_increment_offset = 1;
-SHOW VARIABLES LIKE '%auto_inc%';
-
