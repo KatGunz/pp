@@ -1,15 +1,20 @@
 package DTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import CompositeKeys.FTBCompositeKey;
+
+import javax.persistence.*;
 
 @Entity
+@IdClass(FTBCompositeKey.class)
 @Table(name = "foodtobrand")
 public class FoodToBrand {
+
     @Column(name = "foodID")
+    @Id
     private long foodID;
+
     @Column(name = "brandID")
+    @Id
     private long brandID;
 
     public long getFoodID() { return foodID;}

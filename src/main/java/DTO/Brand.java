@@ -1,23 +1,31 @@
 package DTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "brand")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Brand {
+
     @Column(name = "brandID")
-    private long brandID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotBlank
+    private long brandId;
+
     @Column(name = "brandName")
+    @NotBlank
     private String brandName;
     
     public long getBrandID() {
-        return brandID;
+        return brandId;
     }
 
-    public void setBrandID(long brandID) {
-        this.brandID = brandID;
+    public void setBrandID(long brandId) {
+        this.brandId = brandId;
     }
 
     public String getBrandName() {

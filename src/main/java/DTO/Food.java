@@ -1,16 +1,22 @@
 package DTO;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.lang.String;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "food")
 public class Food {
+
     @Column(name = "foodID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotBlank
     private long foodID;
+
     @Column(name = "foodName")
+    @NotBlank
     private String foodName;
     @Column(name = "calories")
     private double calories;
