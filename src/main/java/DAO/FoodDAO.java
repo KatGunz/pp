@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface FoodDAO extends JpaRepository<Food,Long>{
     List<Food> findById(Long Id);
-    List<Food> findByFood(Food food);
+    List<Food> findByFoodName(String s);
 }

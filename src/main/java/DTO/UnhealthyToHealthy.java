@@ -8,17 +8,17 @@ import javax.persistence.Table;
 @Table(name = "unhealthytohealthy")
 public class UnhealthyToHealthy {
     @Column(name = "unhealthyFoodID")
-    private long unhealthyFoodID;
+    private Long unhealthyFoodID;
     @Column(name = "healthyFoodID")
-    private String healthyFoodID;
+    private Long healthyFoodID;
 
-    public long getUnhealthyFoodID() { return unhealthyFoodID;}
+    public Long getUnhealthyFoodID() { return unhealthyFoodID;}
 
     public void setUnhealthyFoodID(long unhealthyFoodID) { this.unhealthyFoodID = unhealthyFoodID;}
 
-    public String getHealthyFoodID() { return healthyFoodID;}
+    public Long getHealthyFoodID() { return healthyFoodID;}
 
-    public void setHealthyFoodID(String healthyFoodID) { this.healthyFoodID = healthyFoodID; }
+    public void setHealthyFoodID(Long healthyFoodID) { this.healthyFoodID = healthyFoodID; }
 
 }
 
