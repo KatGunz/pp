@@ -1,11 +1,11 @@
 package DTO;
 
-import CompositeKeys.FTBCompositeKey;
+import CompositeKeys.FoodToBrandCompositeKey;
 
 import javax.persistence.*;
 
 @Entity
-@IdClass(FTBCompositeKey.class)
+@IdClass(FoodToBrandCompositeKey.class)
 @Table(name = "foodtobrand")
 public class FoodToBrand {
 
