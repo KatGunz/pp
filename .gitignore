@@ -26,3 +26,4 @@ nbdist/
 ### Others ###
 desktop.ini
 Git Bash.lnk
+node_modules/*
