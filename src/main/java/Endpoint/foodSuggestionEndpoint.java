@@ -1,4 +1,4 @@
-package Controllers;
+package Endpoint;
 
 import Services.HealthyFoodLookupService;
 import com.google.gson.Gson;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/foodLookup")
-public class foodSuggestionController {
+public class foodSuggestionEndpoint {
     @Autowired
     private HealthyFoodLookupService healthyFoodLookupService;
 
