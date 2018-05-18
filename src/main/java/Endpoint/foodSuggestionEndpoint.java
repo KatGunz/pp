@@ -1,25 +1,26 @@
 package Endpoint;
 
+import DTO.Food;
 import Services.HealthyFoodLookupService;
 import com.google.gson.Gson;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/api/foodLookup")
+@RequestMapping(value = "/api/foodLookup")
+
 public class foodSuggestionEndpoint {
     @Autowired
     private HealthyFoodLookupService healthyFoodLookupService;
 
-    @GetMapping(path = "/{unhealthyFoodName}", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "suggests healthy food given unhealthy food", response = Food.class)
+    @RequestMapping(value = "/{unhealthyFoodName}", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public ResponseEntity<String> findHealthyFoodNameByUnhealthyFoodName(@PathVariable String unhealthyFoodName) {
         ArrayList<String> healthyFoods = healthyFoodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodName);
         if(healthyFoods.size()<=0){
