@@ -3,20 +3,22 @@ package com.project.winter.DTO;
 import com.project.winter.CompositeKeys.UnhealthyToHealthyCompositeKey;
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @IdClass(UnhealthyToHealthyCompositeKey.class)
 @Table(name = "unhealthytohealthy")
 public class UnhealthyToHealthy {
+
+    @NotNull
+    @EmbeddedId
     @Column(name = "unhealthyFoodID")
-    @Id
     private Long unhealthyFoodID;
+
+    @NotNull
+    @EmbeddedId
     @Column(name = "healthyFoodID")
-    @Id
     private Long healthyFoodID;
 
     public Long getUnhealthyFoodID() { return unhealthyFoodID;}

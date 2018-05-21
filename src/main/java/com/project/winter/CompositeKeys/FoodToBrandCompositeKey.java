@@ -1,10 +1,16 @@
 package com.project.winter.CompositeKeys;
 
+import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Embeddable
 public class FoodToBrandCompositeKey implements Serializable{
+    @NotNull
     protected Long foodKey;
+    @NotNull
     protected Long brandKey;
+
     public FoodToBrandCompositeKey(Long foodKey, Long brandKey) {
         this.foodKey = foodKey;
         this.brandKey = brandKey;

@@ -1,9 +1,14 @@
 package com.project.winter.CompositeKeys;
 
+import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Embeddable
 public class UnhealthyToHealthyCompositeKey implements Serializable {
+    @NotNull
     protected Long unhealthyKey;
+    @NotNull
     protected Long healthyKey;
 
     public UnhealthyToHealthyCompositeKey(Long unhealthyKey, Long healthyKey){
