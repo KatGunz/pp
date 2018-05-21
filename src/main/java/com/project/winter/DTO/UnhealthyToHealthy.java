@@ -1,7 +1,6 @@
 package com.project.winter.DTO;
 
 import com.project.winter.CompositeKeys.UnhealthyToHealthyCompositeKey;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,12 +11,12 @@ import javax.validation.constraints.NotNull;
 public class UnhealthyToHealthy {
 
     @NotNull
-    @EmbeddedId
+    @Id
     @Column(name = "unhealthyFoodID")
     private Long unhealthyFoodID;
 
     @NotNull
-    @EmbeddedId
+    @Id
     @Column(name = "healthyFoodID")
     private Long healthyFoodID;
 

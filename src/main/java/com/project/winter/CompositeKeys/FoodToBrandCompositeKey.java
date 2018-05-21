@@ -4,16 +4,15 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Embeddable
 public class FoodToBrandCompositeKey implements Serializable{
     @NotNull
-    protected Long foodKey;
+    protected Long foodID;
     @NotNull
-    protected Long brandKey;
+    protected Long brandID;
 
     public FoodToBrandCompositeKey(Long foodKey, Long brandKey) {
-        this.foodKey = foodKey;
-        this.brandKey = brandKey;
+        this.foodID = foodKey;
+        this.foodID = brandKey;
     }
 
     @Override
@@ -23,14 +22,14 @@ public class FoodToBrandCompositeKey implements Serializable{
 
         FoodToBrandCompositeKey that = (FoodToBrandCompositeKey) o;
 
-        if (foodKey != null ? !foodKey.equals(that.foodKey) : that.foodKey != null) return false;
-        return brandKey != null ? brandKey.equals(that.brandKey) : that.brandKey == null;
+        if (foodID != null ? !foodID.equals(that.foodID) : that.foodID != null) return false;
+        return brandID != null ? brandID.equals(that.brandID) : that.brandID == null;
     }
 
     @Override
     public int hashCode() {
-        int result = foodKey != null ? foodKey.hashCode() : 0;
-        result = 31 * result + (brandKey != null ? brandKey.hashCode() : 0);
+        int result = foodID != null ? foodID.hashCode() : 0;
+        result = 31 * result + (brandID != null ? brandID.hashCode() : 0);
         return result;
     }
 }

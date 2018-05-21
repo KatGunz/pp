@@ -10,11 +10,11 @@ import javax.persistence.*;
 public class FoodToBrand {
 
     @Column(name = "foodID")
-    @EmbeddedId
+    @Id
     private long foodID;
 
     @Column(name = "brandID")
-    @EmbeddedId
+    @Id
     private long brandID;
 
     public long getFoodID() { return foodID;}
