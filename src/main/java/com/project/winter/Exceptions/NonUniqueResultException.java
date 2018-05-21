@@ -1,4 +1,4 @@
-package Exceptions;
+package com.project.winter.Exceptions;
 
 public class NonUniqueResultException extends Exception{
 
