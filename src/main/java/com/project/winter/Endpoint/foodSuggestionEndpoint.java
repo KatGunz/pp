@@ -1,7 +1,7 @@
-package Endpoint;
+package com.project.winter.Endpoint;
 
-import DTO.Food;
-import Services.HealthyFoodLookupService;
+import com.project.winter.DTO.Food;
+import com.project.winter.Services.HealthyFoodLookupService;
 import com.google.gson.Gson;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

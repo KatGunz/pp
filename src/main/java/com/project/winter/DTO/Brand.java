@@ -1,4 +1,4 @@
-package DTO;
+package com.project.winter.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package com.project.winter.Project_Name;
+package com.project.winter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,6 @@
-package CompositeKeys;
+package com.project.winter.CompositeKeys;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class FoodToBrandCompositeKey implements Serializable{
     protected Long foodKey;

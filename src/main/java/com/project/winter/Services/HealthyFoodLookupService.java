@@ -1,9 +1,9 @@
-package Services;
+package com.project.winter.Services;
 
-import DAO.FoodDAO;
-import DAO.UnhealthyToHealthyDAO;
-import DTO.Food;
-import DTO.UnhealthyToHealthy;
+import com.project.winter.DAO.FoodDAO;
+import com.project.winter.DAO.UnhealthyToHealthyDAO;
+import com.project.winter.DTO.Food;
+import com.project.winter.DTO.UnhealthyToHealthy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package DTO;
+package com.project.winter.DTO;
 
-import CompositeKeys.UnhealthyToHealthyCompositeKey;
+import com.project.winter.CompositeKeys.UnhealthyToHealthyCompositeKey;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Column;
