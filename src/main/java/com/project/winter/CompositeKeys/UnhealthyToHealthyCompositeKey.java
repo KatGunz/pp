@@ -1,18 +1,21 @@
 package com.project.winter.CompositeKeys;
 
-import javax.persistence.Embeddable;
+import com.project.winter.DTO.UnhealthyToHealthy;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class UnhealthyToHealthyCompositeKey implements Serializable {
     @NotNull
-    protected Long unhealthyFoodID;
+    protected Long unhealthyFoodId;
     @NotNull
-    protected Long healthyFoodID;
+    protected Long healthyFoodId;
 
-    public UnhealthyToHealthyCompositeKey(Long unhealthyKey, Long healthyKey){
-        this.unhealthyFoodID = healthyKey;
-        this.healthyFoodID = unhealthyKey;
+    public UnhealthyToHealthyCompositeKey(){
+    }
+    public UnhealthyToHealthyCompositeKey(Long unhealthyFoodId, Long healthyFoodId){
+        this.unhealthyFoodId = unhealthyFoodId;
+        this.healthyFoodId = healthyFoodId;
     }
 
     @Override
@@ -22,14 +25,14 @@ public class UnhealthyToHealthyCompositeKey implements Serializable {
 
         UnhealthyToHealthyCompositeKey that = (UnhealthyToHealthyCompositeKey) o;
 
-        if (unhealthyFoodID != null ? !unhealthyFoodID.equals(that.unhealthyFoodID) : that.unhealthyFoodID != null) return false;
-        return healthyFoodID != null ? healthyFoodID.equals(that.healthyFoodID) : that.healthyFoodID == null;
+        if (unhealthyFoodId != null ? !unhealthyFoodId.equals(that.unhealthyFoodId) : that.unhealthyFoodId != null) return false;
+        return healthyFoodId != null ? healthyFoodId.equals(that.healthyFoodId) : that.healthyFoodId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = unhealthyFoodID != null ? unhealthyFoodID.hashCode() : 0;
-        result = 31 * result + (healthyFoodID != null ? healthyFoodID.hashCode() : 0);
+        int result = unhealthyFoodId != null ? unhealthyFoodId.hashCode() : 0;
+        result = 31 * result + (healthyFoodId != null ? healthyFoodId.hashCode() : 0);
         return result;
     }
 }

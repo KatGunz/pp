@@ -10,13 +10,13 @@ import javax.persistence.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Brand {
 
-    @Column(name = "brandID")
+    @Column(name = "Brand_Id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotBlank
     private long brandId;
 
-    @Column(name = "brandName")
+    @Column(name = "Brand_Name")
     @NotBlank
     private String brandName;
     

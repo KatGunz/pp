@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface UnhealthyToHealthyDAO extends JpaRepository<com.project.winter.DTO.UnhealthyToHealthy,Long>{
-    List<UnhealthyToHealthy> getAllByUnhealthyId(Long unhealthyId);
+    List<UnhealthyToHealthy> getAllByUnhealthyFoodId(Long unhealthyFoodId);
 }

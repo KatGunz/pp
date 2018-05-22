@@ -12,21 +12,21 @@ public class UnhealthyToHealthy {
 
     @NotNull
     @Id
-    @Column(name = "unhealthyFoodID")
-    private Long unhealthyFoodID;
+    @Column(name = "Unhealthy_Food_Id")
+    private Long unhealthyFoodId;
 
     @NotNull
     @Id
-    @Column(name = "healthyFoodID")
-    private Long healthyFoodID;
+    @Column(name = "Healthy_Food_Id")
+    private Long healthyFoodId;
 
-    public Long getUnhealthyFoodID() { return unhealthyFoodID;}
+    public Long getUnhealthyFoodId() { return unhealthyFoodId;}
 
-    public void setUnhealthyFoodID(long unhealthyFoodID) { this.unhealthyFoodID = unhealthyFoodID;}
+    public void setUnhealthyFoodId(long unhealthyFoodId) { this.unhealthyFoodId = unhealthyFoodId;}
 
-    public Long getHealthyFoodID() { return healthyFoodID;}
+    public Long getHealthyFoodId() { return healthyFoodId;}
 
-    public void setHealthyFoodID(Long healthyFoodID) { this.healthyFoodID = healthyFoodID; }
+    public void setHealthyFoodId(Long healthyFoodId) { this.healthyFoodId = healthyFoodId; }
 
 }
 

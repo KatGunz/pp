@@ -9,46 +9,46 @@ import javax.persistence.*;
 @Table(name = "food")
 public class Food {
 
-    @Column(name = "foodID")
+    @Column(name = "Food_Id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotBlank
-    private long foodID;
+    private long foodId;
 
-    @Column(name = "foodName")
+    @Column(name = "Food_Name")
     @NotBlank
     private String foodName;
-    @Column(name = "calories")
+    @Column(name = "Calories")
     private double calories;
-    @Column(name = "totalFat")
+    @Column(name = "Total_Fat")
     private double totalFat;
-    @Column(name = "cholesterol")
+    @Column(name = "Cholesterol")
     private double cholesterol;
-    @Column(name = "sodium")
+    @Column(name = "Sodium")
     private double sodium;
-    @Column(name = "totalCarbs")
+    @Column(name = "Total_Carbs")
     private double totalCarbs;
-    @Column(name = "protein")
+    @Column(name = "Protein")
     private double protein;
-    @Column(name = "vitaminA")
+    @Column(name = "Vitamin_A")
     private double vitaminA;
-    @Column(name = "vitaminB")
+    @Column(name = "Vitamin_B")
     private double vitaminB;
-    @Column(name = "vitaminC")
+    @Column(name = "Vitamin_C")
     private double vitaminC;
-    @Column(name = "vitaminD")
+    @Column(name = "Vitamin_D")
     private double vitaminD;
-    @Column(name = "calcium")
+    @Column(name = "Calcium")
     private double calcium;
-    @Column(name = "iron")
+    @Column(name = "Iron")
     private double iron;
 
-    public long getFoodID() {
-        return foodID;
+    public long getFoodId() {
+        return foodId;
     }
 
-    public void setFoodID(long foodID) {
-        this.foodID = foodID;
+    public void setFoodId(long foodId) {
+        this.foodId = foodId;
     }
 
     public String getFoodName() {

@@ -9,23 +9,23 @@ import javax.persistence.*;
 @Table(name = "foodtobrand")
 public class FoodToBrand {
 
-    @Column(name = "foodID")
+    @Column(name = "Food_Id")
     @Id
-    private long foodID;
+    private long foodId;
 
-    @Column(name = "brandID")
+    @Column(name = "Brand_Id")
     @Id
-    private long brandID;
+    private long brandId;
 
-    public long getFoodID() { return foodID;}
+    public long getFoodId() { return foodId;}
 
-    public void setFoodID(long foodID) {this.foodID = foodID;}
+    public void setFoodId(long foodId) {this.foodId = foodId;}
 
-    public long getBrandID() {
-        return brandID;
+    public long getBrandId() {
+        return brandId;
     }
 
-    public void setBrandID(long brandID) {
-        this.brandID = brandID;
+    public void setBrandId(long brandId) {
+        this.brandId = brandId;
     }
 }

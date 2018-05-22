@@ -1,18 +1,19 @@
 package com.project.winter.CompositeKeys;
 
-import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class FoodToBrandCompositeKey implements Serializable{
     @NotNull
-    protected Long foodID;
+    protected Long foodId;
     @NotNull
-    protected Long brandID;
+    protected Long brandId;
 
-    public FoodToBrandCompositeKey(Long foodKey, Long brandKey) {
-        this.foodID = foodKey;
-        this.foodID = brandKey;
+    public FoodToBrandCompositeKey(){
+    }
+    public FoodToBrandCompositeKey(Long foodId, Long brandId) {
+        this.foodId = foodId;
+        this.foodId = brandId;
     }
 
     @Override
@@ -22,14 +23,14 @@ public class FoodToBrandCompositeKey implements Serializable{
 
         FoodToBrandCompositeKey that = (FoodToBrandCompositeKey) o;
 
-        if (foodID != null ? !foodID.equals(that.foodID) : that.foodID != null) return false;
-        return brandID != null ? brandID.equals(that.brandID) : that.brandID == null;
+        if (foodId != null ? !foodId.equals(that.foodId) : that.foodId != null) return false;
+        return brandId != null ? brandId.equals(that.brandId) : that.brandId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = foodID != null ? foodID.hashCode() : 0;
-        result = 31 * result + (brandID != null ? brandID.hashCode() : 0);
+        int result = foodId != null ? foodId.hashCode() : 0;
+        result = 31 * result + (brandId != null ? brandId.hashCode() : 0);
         return result;
     }
 }
