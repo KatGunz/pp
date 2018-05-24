@@ -51,7 +51,7 @@ public class HealthyFoodLookupServiceTest {
     }
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithSuggestions(){
-        ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> result;
         String unhealthyFood = "pee";
         ArrayList<Food> myResult = new ArrayList<>();
         Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(myResult);
