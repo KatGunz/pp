@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HealthyFoodLookupServiceTest {
@@ -37,10 +38,26 @@ public class HealthyFoodLookupServiceTest {
     }
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithNoSuggestions(){
-
+        ArrayList<String> result;
+        String unhealthyFood = "poo";
+        Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(Collections.emptyList());
+        result = healthyFoodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
+        Mockito.verify(foodDAO).findByFoodName(unhealthyFood);
+        Mockito.verifyNoMoreInteractions(foodDAO);
+        Mockito.verify(unhealthyToHealthyDAO);
+        Mockito.verifyNoMoreInteractions(unhealthyToHealthyDAO);
+        Assert.assertNotNull(result);
     }
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithSuggestions(){
-
+        ArrayList<String> result = new ArrayList<>();
+        String unhealthyFood = "pee";
+        Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(result);
+        result = healthyFoodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
+        Mockito.verify(foodDAO).findByFoodName(unhealthyFood);
+        Mockito.verifyNoMoreInteractions(foodDAO);
+        Mockito.verify(unhealthyToHealthyDAO);
+        Mockito.verifyNoMoreInteractions(unhealthyToHealthyDAO);
+        Assert.assertNotNull(result);
     }
 }
