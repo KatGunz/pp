@@ -25,7 +25,7 @@ public class HealthyFoodLookupService {
     @Autowired
     private UnhealthyToHealthyDAO uthDAO;
 
-    final static Logger logger = Logger.getLogger(HealthyFoodLookupService.class);
+    private final static Logger logger = Logger.getLogger(HealthyFoodLookupService.class);
 
     public ArrayList<String> findHealthyFoodsNameByUnhealthyFoodName(String unhealthyFood){
         logger.info("Finding healthy foods for unhealthy food name: "+ unhealthyFood );
