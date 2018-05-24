@@ -2,6 +2,7 @@ package com.project.winter;
 
 import com.project.winter.DAO.FoodDAO;
 import com.project.winter.DAO.UnhealthyToHealthyDAO;
+import com.project.winter.DTO.Food;
 import com.project.winter.Services.HealthyFoodLookupService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -52,7 +53,8 @@ public class HealthyFoodLookupServiceTest {
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithSuggestions(){
         ArrayList<String> result = new ArrayList<>();
         String unhealthyFood = "pee";
-        Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(result);
+        ArrayList<Food> myResult = new ArrayList<>();
+        Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(myResult);
         result = healthyFoodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
         Mockito.verify(foodDAO).findByFoodName(unhealthyFood);
         Mockito.verifyNoMoreInteractions(foodDAO);
