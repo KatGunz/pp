@@ -1,4 +1,4 @@
-package com.project.winter;
+package com.project.winter.Services;
 
 import com.project.winter.DAO.FoodDAO;
 import com.project.winter.DAO.UnhealthyToHealthyDAO;
