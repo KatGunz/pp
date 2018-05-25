@@ -36,7 +36,6 @@ public class HealthyFoodLookupService {
         }
         Food result = foodResultSet.get(0);
         Long foodId = result.getFoodId();
-        UnhealthyToHealthy temp;
         List<UnhealthyToHealthy> junctionResultList = uthDAO.getAllByUnhealthyFoodId(foodId);
         ArrayList<String> allHealthyMatchesNames = new ArrayList<>();
         //if no suggestions are found, return the empty arraylist
