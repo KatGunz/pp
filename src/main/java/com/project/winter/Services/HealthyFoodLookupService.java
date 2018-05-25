@@ -30,7 +30,6 @@ public class HealthyFoodLookupService {
     public ArrayList<String> findHealthyFoodsNameByUnhealthyFoodName(String unhealthyFood){
         logger.info("Finding healthy foods for unhealthy food name: "+ unhealthyFood );
         List<Food> foodResultSet = foodDAO.findByFoodName(unhealthyFood);
-        ArrayList<String> allHealthyMatchesNames = new ArrayList<>();
         //if the food is unknown, return null
         if(isEmpty(foodResultSet)){
             return null;
@@ -38,22 +37,20 @@ public class HealthyFoodLookupService {
         Food result = foodResultSet.get(0);
         Long foodId = result.getFoodId();
         UnhealthyToHealthy temp;
-        List<UnhealthyToHealthy> junctionResultList = uthDAO.findAll();
+        List<UnhealthyToHealthy> junctionResultList = uthDAO.getAllByUnhealthyFoodId(foodId);
+        ArrayList<String> allHealthyMatchesNames = new ArrayList<>();
         //if no suggestions are found, return the empty arraylist
         if(isEmpty(junctionResultList)){
             return allHealthyMatchesNames;
         }
-        junctionResultList = junctionResultList.stream()
-                .filter(line -> (foodId==line.getUnhealthyFoodId()))
-                .collect(Collectors.toList());
         ArrayList<Long> idList = new ArrayList<>();
-        for(int i=0; i<junctionResultList.size(); i++) {
-            idList.add(junctionResultList.get(i).getHealthyFoodId());
+        for(UnhealthyToHealthy uth: junctionResultList) {
+            idList.add(uth.getHealthyFoodId());
         }
         List<Food> allHealthyMatches = foodDAO.findAll(idList);
         allHealthyMatchesNames = new ArrayList<>();
-        for(int i=0; i<allHealthyMatches.size(); i++){
-            allHealthyMatchesNames.add(allHealthyMatches.get(i).getFoodName());
+        for(Food healthyMatch: allHealthyMatches){
+            allHealthyMatchesNames.add(healthyMatch.getFoodName());
         }
         //return the populated suggestions
         return allHealthyMatchesNames;
