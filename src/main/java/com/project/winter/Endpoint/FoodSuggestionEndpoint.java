@@ -17,6 +17,8 @@ import java.util.ArrayList;
 public class FoodSuggestionEndpoint {
 
     @Autowired
+    private HealthyFoodLookupService healthyFoodLookupService;
+
     final static Logger logger = Logger.getLogger(FoodSuggestionEndpoint.class);
 
     @ApiOperation(value = "suggests healthy food given unhealthy food")
