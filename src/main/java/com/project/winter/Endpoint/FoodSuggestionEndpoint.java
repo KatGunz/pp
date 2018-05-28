@@ -18,7 +18,7 @@ public class FoodSuggestionEndpoint {
 
     @Autowired
     private HealthyFoodLookupService healthyFoodLookupService;
-
+    //test comment
     final static Logger logger = Logger.getLogger(FoodSuggestionEndpoint.class);
 
     @ApiOperation(value = "suggests healthy food given unhealthy food")
