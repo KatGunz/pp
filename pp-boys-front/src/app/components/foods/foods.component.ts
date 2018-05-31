@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { Food } from '../../domain/Food';
+import { FoodService } from '../../services/services.food/food.service';
+import { MessageService } from '../../services/services.message/message.service';
+
+@Component({
+  selector: 'app-foods',
+  templateUrl: './foods.component.html',
+  styleUrls: ['./foods.component.css']
+})
+
+export class FoodsComponent implements OnInit {
+
+  foods: Food[];
+
+  selectedFood: Food;
+
+  constructor(private foodService: FoodService,
+        private messageService: MessageService) { }
+
+  ngOnInit() {
+    this.getFoods();
+  }
+
+  getFoods(): void {
+    this.foodService.getFoods()
+      .subscribe(foods => this.foods = foods);
+  }
+  onSelect(food: Food): void {
+    this.messageService.clear();
+    this.messageService.add('Selected Food: ' + food.name);
+    this.selectedFood = food;
+  }
+
+}

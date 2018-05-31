@@ -1,0 +1,11 @@
+<h2>My Foods</h2>
+<ul class="foods">
+  <li *ngFor="let food of foods"
+      [class.selected]="food===selectedFood"
+      (click)="onSelect(food)" >
+    <span class="badge">{{food.id}}</span> {{food.name}}
+  </li>
+</ul>
+
+<app-food-detail [food]="selectedFood"></app-food-detail>
+
