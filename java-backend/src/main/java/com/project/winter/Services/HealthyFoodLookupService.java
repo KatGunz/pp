@@ -20,8 +20,10 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 @Service
 @Transactional
 public class HealthyFoodLookupService {
+
     @Autowired
     private FoodDAO foodDAO;
+
     @Autowired
     private UnhealthyToHealthyDAO uthDAO;
 

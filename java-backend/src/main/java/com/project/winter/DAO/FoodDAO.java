@@ -10,3 +10,4 @@ public interface FoodDAO extends JpaRepository<Food,Long>{
     List<Food> findByFoodId(Long foodId);
     List<Food> findByFoodName(String foodName);
 }
+
