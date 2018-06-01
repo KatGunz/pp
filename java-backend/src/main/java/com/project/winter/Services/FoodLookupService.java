@@ -8,24 +8,22 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.NonUniqueResultException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.springframework.util.CollectionUtils.isEmpty;
 
 
 @Service
 @Transactional
-public class HealthyFoodLookupService {
+public class FoodLookupService {
     @Autowired
     private FoodDAO foodDAO;
     @Autowired
     private UnhealthyToHealthyDAO uthDAO;
 
-    private final static Logger logger = Logger.getLogger(HealthyFoodLookupService.class);
+    private final static Logger logger = Logger.getLogger(FoodLookupService.class);
 
     public ArrayList<String> findHealthyFoodsNameByUnhealthyFoodName(String unhealthyFood){
         logger.info("Finding healthy foods for unhealthy food name: "+ unhealthyFood );
@@ -54,6 +52,12 @@ public class HealthyFoodLookupService {
         //return the populated suggestions
         return allHealthyMatchesNames;
 
+    }
+
+    public List<Food> findKnownFoods() {
+        logger.info("Finding known foods ");
+        List<Food> foodResultSet = foodDAO.findAll();
+        return foodResultSet;
     }
 
 }

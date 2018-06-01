@@ -4,7 +4,6 @@ import com.project.winter.DAO.FoodDAO;
 import com.project.winter.DAO.UnhealthyToHealthyDAO;
 import com.project.winter.DTO.Food;
 import com.project.winter.DTO.UnhealthyToHealthy;
-import com.project.winter.Services.HealthyFoodLookupService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,13 +13,10 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static org.springframework.util.StringUtils.isEmpty;
-
 @RunWith(MockitoJUnitRunner.class)
-public class HealthyFoodLookupServiceTest {
+public class FoodLookupServiceTest {
     @Mock
     private FoodDAO foodDAO;
 
@@ -28,14 +24,14 @@ public class HealthyFoodLookupServiceTest {
     private UnhealthyToHealthyDAO unhealthyToHealthyDAO;
 
     @InjectMocks
-    private HealthyFoodLookupService healthyFoodLookupService;
+    private FoodLookupService foodLookupService;
 
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithUnknownFood(){
         ArrayList<String> result;
         String unhealthyFood = "my cooking";
         Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(null);
-        result = healthyFoodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
+        result = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
         Mockito.verify(foodDAO).findByFoodName(unhealthyFood);
         Mockito.verifyNoMoreInteractions(foodDAO);
         Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
@@ -52,7 +48,7 @@ public class HealthyFoodLookupServiceTest {
         food.setFoodId(unhealthyFoodId);
         Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(existingFood);
         Mockito.when(unhealthyToHealthyDAO.getAllByUnhealthyFoodId(unhealthyFoodId)).thenReturn(null);
-        result = healthyFoodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
+        result = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
         Mockito.verify(foodDAO).findByFoodName(unhealthyFood);
         Mockito.verifyNoMoreInteractions(foodDAO);
         Mockito.verify(unhealthyToHealthyDAO).getAllByUnhealthyFoodId(unhealthyFoodId);
@@ -81,7 +77,7 @@ public class HealthyFoodLookupServiceTest {
         Mockito.when(foodDAO.findByFoodName(unhealthyFoodName)).thenReturn(existingFood);
         Mockito.when(foodDAO.findAll(Mockito.any(ArrayList.class))).thenReturn(healthyFoodList);
         Mockito.when(unhealthyToHealthyDAO.getAllByUnhealthyFoodId(unhealthyFoodId)).thenReturn(healthySuggestionsList);
-        result = healthyFoodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodName);
+        result = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodName);
         Mockito.verify(foodDAO).findByFoodName(unhealthyFoodName);
         Mockito.verify(foodDAO).findAll(Mockito.any(ArrayList.class));
         Mockito.verifyNoMoreInteractions(foodDAO);
