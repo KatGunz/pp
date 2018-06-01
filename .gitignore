@@ -26,4 +26,4 @@ nbdist/
 ### Others ###
 desktop.ini
 Git Bash.lnk
-node_modules/*
+pp-boys-front/node_modules
