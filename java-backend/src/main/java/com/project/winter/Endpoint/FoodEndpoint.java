@@ -23,7 +23,7 @@ public class FoodEndpoint {
     final static Logger logger = Logger.getLogger(FoodEndpoint.class);
 
     @ApiOperation(value = "suggests healthy food given unhealthy food")
-    @RequestMapping(value = "/{unhealthyFoodName}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/{unhealthyFoodName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     public ResponseEntity<String> findHealthyFoodNameByUnhealthyFoodName(@PathVariable String unhealthyFoodName) {
         logger.info("Handling request for healthy food suggestion, with unhealthy food name: "+ unhealthyFoodName );
         ArrayList<String> healthyFoods = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodName);
@@ -43,7 +43,7 @@ public class FoodEndpoint {
     }
 
     @ApiOperation(value = "provides all known foods")
-    @RequestMapping(value = "/knownFoods", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/knownFoods", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     public List<Food> knownFoodLookUp() {
         logger.info("Handling request for known foods. ");
         List<Food> knownFoods = foodLookupService.findKnownFoods();
