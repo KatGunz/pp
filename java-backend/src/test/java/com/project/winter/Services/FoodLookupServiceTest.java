@@ -87,4 +87,16 @@ public class FoodLookupServiceTest {
         Assert.assertTrue(result.size()==1);
         Assert.assertEquals(healthyFoodName,result.get(0));
     }
+    @Test
+    public void testFindKnownFoods(){
+        List<Food> knownFoods = new ArrayList<>();
+        Mockito.when(foodDAO.findAll()).thenReturn(knownFoods);
+        List<Food> result = foodLookupService.findKnownFoods();
+        Mockito.verify(foodDAO).findAll();
+        Mockito.verifyNoMoreInteractions(foodDAO);
+        Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.size()==0);
+    }
+
 }
