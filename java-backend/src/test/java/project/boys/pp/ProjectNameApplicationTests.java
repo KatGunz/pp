@@ -1,4 +1,4 @@
-package com.project.winter;
+package project.boys.pp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.project.winter;
+package project.boys.pp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

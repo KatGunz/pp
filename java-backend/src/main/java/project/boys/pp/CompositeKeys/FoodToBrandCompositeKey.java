@@ -1,4 +1,4 @@
-package com.project.winter.CompositeKeys;
+package project.boys.pp.CompositeKeys;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

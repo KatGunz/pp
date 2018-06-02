@@ -1,6 +1,6 @@
-package com.project.winter.DTO;
+package project.boys.pp.DTO;
 
-import com.project.winter.CompositeKeys.FoodToBrandCompositeKey;
+import project.boys.pp.CompositeKeys.FoodToBrandCompositeKey;
 
 import javax.persistence.*;
 

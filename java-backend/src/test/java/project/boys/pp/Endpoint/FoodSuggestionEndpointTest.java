@@ -1,11 +1,10 @@
-package com.project.winter.Endpoint;
+package project.boys.pp.Endpoint;
 
-import com.project.winter.Services.HealthyFoodLookupService;
+import project.boys.pp.Services.HealthyFoodLookupService;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;

@@ -1,11 +1,11 @@
-package com.project.winter.DAO;
+package project.boys.pp.DAO;
 
-import com.project.winter.DTO.UnhealthyToHealthy;
+import project.boys.pp.DTO.UnhealthyToHealthy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UnhealthyToHealthyDAO extends JpaRepository<com.project.winter.DTO.UnhealthyToHealthy,Long>{
+public interface UnhealthyToHealthyDAO extends JpaRepository<UnhealthyToHealthy,Long>{
     List<UnhealthyToHealthy> getAllByUnhealthyFoodId(Long unhealthyFoodId);
 }

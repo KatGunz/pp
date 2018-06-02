@@ -1,6 +1,6 @@
-package com.project.winter.DTO;
+package project.boys.pp.DTO;
 
-import com.project.winter.CompositeKeys.UnhealthyToHealthyCompositeKey;
+import project.boys.pp.CompositeKeys.UnhealthyToHealthyCompositeKey;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

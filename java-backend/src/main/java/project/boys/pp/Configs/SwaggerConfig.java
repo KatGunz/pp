@@ -1,4 +1,4 @@
-package com.project.winter.Configs;
+package project.boys.pp.Configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

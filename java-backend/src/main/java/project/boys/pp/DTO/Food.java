@@ -1,4 +1,4 @@
-package com.project.winter.DTO;
+package project.boys.pp.DTO;
 
 import org.hibernate.validator.constraints.NotBlank;
 

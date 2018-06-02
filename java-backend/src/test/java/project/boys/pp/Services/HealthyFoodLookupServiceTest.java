@@ -1,10 +1,9 @@
-package com.project.winter.Services;
+package project.boys.pp.Services;
 
-import com.project.winter.DAO.FoodDAO;
-import com.project.winter.DAO.UnhealthyToHealthyDAO;
-import com.project.winter.DTO.Food;
-import com.project.winter.DTO.UnhealthyToHealthy;
-import com.project.winter.Services.HealthyFoodLookupService;
+import project.boys.pp.DAO.FoodDAO;
+import project.boys.pp.DAO.UnhealthyToHealthyDAO;
+import project.boys.pp.DTO.Food;
+import project.boys.pp.DTO.UnhealthyToHealthy;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import static org.springframework.util.StringUtils.isEmpty;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HealthyFoodLookupServiceTest {

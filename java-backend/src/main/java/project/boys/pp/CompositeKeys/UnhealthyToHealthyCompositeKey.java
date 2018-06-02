@@ -1,6 +1,4 @@
-package com.project.winter.CompositeKeys;
-
-import com.project.winter.DTO.UnhealthyToHealthy;
+package project.boys.pp.CompositeKeys;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
