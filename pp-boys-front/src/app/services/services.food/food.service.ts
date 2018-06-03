@@ -18,14 +18,17 @@ export class FoodService {
   private log(message: string) {
     this.messageService.add('FoodService: ' + message);
   }
+  private foodsUrl = 'http://localhost:8080/api/foodLookup/knownFoods';
+
   getFoods(): Observable<Food[]> {
     this.messageService.clear();
-    this.messageService.add('FoodService: fetched foods');
-    return of(FOODS);
+    this.log('fetched foods');
+    // return of(FOODS);
+    return this.http.get<Food[]>(this.foodsUrl);
   }
   getFood(id: number): Observable<Food> {
     this.messageService.clear();
-    this.messageService.add(`FoodService: fetched food id=${id}`);
+    this.log(`fetched food id=${id}`);
     return of(FOODS.find(food=>id===food.id));
   }
 
