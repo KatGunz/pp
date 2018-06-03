@@ -1,11 +1,12 @@
 package project.boys.pp.Services;
 
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 import project.boys.pp.DAO.FoodDAO;
 import project.boys.pp.DAO.UnhealthyToHealthyDAO;
 import project.boys.pp.DTO.Food;
 import project.boys.pp.DTO.UnhealthyToHealthy;
-import org.apache.log4j.Logger;
-import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -18,7 +19,6 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 @Service
 @Transactional
 public class FoodLookupService {
-
     @Inject
     private FoodDAO foodDAO;
 
@@ -55,6 +55,7 @@ public class FoodLookupService {
         return allHealthyMatchesNames;
 
     }
+
     public List<Food> findKnownFoods() {
         logger.info("Finding known foods ");
         List<Food> foodResultSet = foodDAO.findAll();

@@ -13,7 +13,8 @@ export class FoodsComponent implements OnInit {
 
   foods: Food[];
 
-  constructor(private foodService: FoodService,
+  constructor(
+        private foodService: FoodService,
         private messageService: MessageService) { }
 
   ngOnInit() {
