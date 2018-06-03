@@ -13,8 +13,6 @@ export class FoodsComponent implements OnInit {
 
   foods: Food[];
 
-  selectedFood: Food;
-
   constructor(private foodService: FoodService,
         private messageService: MessageService) { }
 
@@ -25,11 +23,6 @@ export class FoodsComponent implements OnInit {
   getFoods(): void {
     this.foodService.getFoods()
       .subscribe(foods => this.foods = foods);
-  }
-  onSelect(food: Food): void {
-    this.messageService.clear();
-    this.messageService.add('Selected Food: ' + food.name);
-    this.selectedFood = food;
   }
 
 }

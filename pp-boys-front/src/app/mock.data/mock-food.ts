@@ -1,4 +1,4 @@
-import { Food } from '../domain.classes/Food';
+import { Food } from '../domain/Food';
 
 export const FOODS: Food[] = [
 { id: 1, name: 'chicken' },

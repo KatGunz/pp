@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Food } from '../../domain/Food';
+import { FoodService } from '../../services/services.food/food.service';
+import { Observable } from 'rxjs';
+import { MessageService } from '../../services/services.message/message.service'
 
 @Component({
   selector: 'app-food-detail',
@@ -9,10 +14,26 @@ import { Food } from '../../domain/Food';
 
 export class FoodDetailComponent implements OnInit {
 
-  @Input() food = Food;
-  constructor() { }
+  @Input() food: Food;
+  
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private foodService: FoodService,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
+    this.getFood();
   }
+  getFood():void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.foodService.getFood(id)
+      .subscribe(food=> this.food = food);
+  }
+  goBack():void{
+    this.location.back();
+  }
+  
 
 }
