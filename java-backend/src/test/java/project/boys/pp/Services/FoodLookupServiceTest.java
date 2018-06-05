@@ -41,7 +41,7 @@ public class FoodLookupServiceTest {
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithNoSuggestions(){
         ArrayList<String> result;
-        String unhealthyFood = "poo";
+        String unhealthyFood = "unhealthy food";
         long unhealthyFoodId = 8;
         Food food = new Food();
         List<Food> existingFood = new ArrayList<>();
@@ -60,11 +60,11 @@ public class FoodLookupServiceTest {
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithSuggestions(){
         ArrayList<String> result;
-        String unhealthyFoodName = "pee";
+        String unhealthyFoodName = "unhealthy food";
         long unhealthyFoodId = 5L;
         Food unhealthyFood = new Food();
         Food healthyFood = new Food();
-        String healthyFoodName = "water";
+        String healthyFoodName = "healthy food";
         healthyFood.setFoodName(healthyFoodName);
         List<Food> existingFood = new ArrayList<>();
         List<Food> healthyFoodList = new ArrayList<>();

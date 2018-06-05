@@ -43,13 +43,19 @@ public class FoodEndpointTest {
     }
 
     @Test
-    public void testFindHealthyFoodNameByUnhealthyFoodNameWithUnknownFood(){
-
+    public void testFindHealthyFoodNameByUnhealthyFoodNameWithUnknownFood() throws Exception{
+        String unknownFoodStub = "unknown food";
+        Mockito.when(foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unknownFoodStub)).thenReturn(null);
+        mockMvc.perform(get("/api/foodLookup/" + unknownFoodStub).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isNoContent())
+                .andExpect(header().stringValues("Unknown Food", unknownFoodStub));
+        Mockito.verify(foodLookupService).findHealthyFoodsNameByUnhealthyFoodName(unknownFoodStub);
+        Mockito.verifyNoMoreInteractions(foodLookupService);
     }
 
     @Test
     public void testFindHealthyFoodNameByUnhealthyFoodNameWithNoSuggestions() throws Exception{
-        String unhealthyFoodStub = "pee";
+        String unhealthyFoodStub = "unhealthy food";
         ArrayList<String> emptyArrayListStub = new ArrayList<>();
         Mockito.when(foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodStub)).thenReturn(emptyArrayListStub);
         mockMvc.perform(get("/api/foodLookup/" + unhealthyFoodStub).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
@@ -61,8 +67,8 @@ public class FoodEndpointTest {
 
     @Test
     public void testFindHealthyFoodNameByUnhealthyFoodNameWithSuccess() throws Exception{
-        String unhealthyFoodStub = "poo";
-        String healthyFood = "healthyPoo";
+        String unhealthyFoodStub = "unhealthy food";
+        String healthyFood = "healthy food";
         ArrayList<String> allHealthyMatchesStub = new ArrayList<>();
         allHealthyMatchesStub.add(healthyFood);
         Mockito.when(foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodStub)).thenReturn(allHealthyMatchesStub);
