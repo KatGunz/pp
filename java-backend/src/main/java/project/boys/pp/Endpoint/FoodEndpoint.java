@@ -23,7 +23,7 @@ public class FoodEndpoint {
     final static Logger logger = Logger.getLogger(FoodEndpoint.class);
 
     @ApiOperation(value = "suggests healthy food given unhealthy food")
-    @RequestMapping(value = "/{unhealthyFoodName}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/{unhealthyFoodName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     public ResponseEntity<String> findHealthyFoodNameByUnhealthyFoodName(@PathVariable String unhealthyFoodName) {
         logger.info("Handling request for healthy food suggestion, with unhealthy food name: "+ unhealthyFoodName );
         ArrayList<String> healthyFoods = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodName);
@@ -33,7 +33,6 @@ public class FoodEndpoint {
         }
         else if(healthyFoods.size()<=0){
             logger.info("Found no healthy food suggestions for the unhealthy food name: "+ unhealthyFoodName);
-            String json = new Gson().toJson("{}");
             return ResponseEntity.noContent().header("No suggestions", unhealthyFoodName).build();
         }else{
             logger.info("Successfully generated a response for unhealthy food name: "+ unhealthyFoodName);
