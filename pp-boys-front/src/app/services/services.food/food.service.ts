@@ -26,7 +26,7 @@ export class FoodService {
     this.messageService.clear();
     this.log('fetched foods');
     // return of(FOODS);
-    return this.http.get<Food[]>(this.hostname + this.knownFoodsEndpoint);
+    return this.http.get<Food[]>(this.hostAndPort + this.knownFoodsEndpoint);
   }
 
   getFood(id: number): Observable<Food> {
@@ -34,7 +34,7 @@ export class FoodService {
     this.log(`fetched food id=${id}`);
     // return of(FOODS.find(food=>id===food.id));
     //TODO: write this endpoint
-    return this.http.get<Food>(this.hostname + this.findFoodByIdEndpoint + id);
+    return this.http.get<Food>(this.hostAndPort + this.findFoodByIdEndpoint + id);
   }
 
 }
