@@ -1,6 +1,6 @@
 package project.boys.pp.DAO;
 
-import project.boys.pp.DTO.Food;
+import project.boys.pp.Domain.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

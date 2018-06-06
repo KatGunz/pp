@@ -9,9 +9,9 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import project.boys.pp.DAO.FoodDAO;
 import project.boys.pp.DAO.UnhealthyToHealthyDAO;
-import project.boys.pp.DTO.Food;
-import project.boys.pp.DTO.UnhealthyToHealthy;
-import project.boys.pp.Services.FoodLookupService;
+import project.boys.pp.DTO.FoodDTO;
+import project.boys.pp.Domain.Food;
+import project.boys.pp.Domain.UnhealthyToHealthy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class FoodLookupServiceTest {
 
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithUnknownFood(){
-        ArrayList<String> result;
+        ArrayList<FoodDTO> result;
         String unhealthyFood = "my cooking";
         Mockito.when(foodDAO.findByFoodName(unhealthyFood)).thenReturn(null);
         result = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFood);
@@ -40,7 +40,7 @@ public class FoodLookupServiceTest {
     }
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithNoSuggestions(){
-        ArrayList<String> result;
+        ArrayList<FoodDTO> result;
         String unhealthyFood = "unhealthy food";
         long unhealthyFoodId = 8;
         Food food = new Food();
@@ -59,7 +59,7 @@ public class FoodLookupServiceTest {
     }
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithSuggestions(){
-        ArrayList<String> result;
+        ArrayList<FoodDTO> result;
         String unhealthyFoodName = "unhealthy food";
         long unhealthyFoodId = 5L;
         Food unhealthyFood = new Food();
@@ -86,7 +86,7 @@ public class FoodLookupServiceTest {
         Mockito.verifyNoMoreInteractions(unhealthyToHealthyDAO);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.size()==1);
-        Assert.assertEquals(healthyFoodName,result.get(0));
+        Assert.assertEquals(healthyFoodName,result.get(0).getFoodName());
     }
     @Test
     public void testFindKnownFoods(){

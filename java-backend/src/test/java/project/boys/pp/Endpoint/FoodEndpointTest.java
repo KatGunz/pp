@@ -12,7 +12,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import project.boys.pp.DTO.Food;
+import project.boys.pp.DTO.FoodDTO;
+import project.boys.pp.Domain.Food;
 import project.boys.pp.Services.FoodLookupService;
 
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class FoodEndpointTest {
     @Test
     public void testFindHealthyFoodNameByUnhealthyFoodNameWithNoSuggestions() throws Exception{
         String unhealthyFoodStub = "unhealthy food";
-        ArrayList<String> emptyArrayListStub = new ArrayList<>();
+        ArrayList<FoodDTO> emptyArrayListStub = new ArrayList<>();
         Mockito.when(foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodStub)).thenReturn(emptyArrayListStub);
         mockMvc.perform(get("/api/foodLookup/" + unhealthyFoodStub).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isNoContent())
@@ -68,9 +69,10 @@ public class FoodEndpointTest {
     @Test
     public void testFindHealthyFoodNameByUnhealthyFoodNameWithSuccess() throws Exception{
         String unhealthyFoodStub = "unhealthy food";
-        String healthyFood = "healthy food";
-        ArrayList<String> allHealthyMatchesStub = new ArrayList<>();
-        allHealthyMatchesStub.add(healthyFood);
+        FoodDTO healthyFoodDTO = new FoodDTO();
+        healthyFoodDTO.setFoodName("healthy food");
+        ArrayList<FoodDTO> allHealthyMatchesStub = new ArrayList<>();
+        allHealthyMatchesStub.add(healthyFoodDTO);
         Mockito.when(foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodStub)).thenReturn(allHealthyMatchesStub);
         mockMvc.perform(get("/api/foodLookup/" + unhealthyFoodStub).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())

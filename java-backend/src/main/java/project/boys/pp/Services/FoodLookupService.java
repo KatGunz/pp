@@ -5,8 +5,9 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import project.boys.pp.DAO.FoodDAO;
 import project.boys.pp.DAO.UnhealthyToHealthyDAO;
-import project.boys.pp.DTO.Food;
-import project.boys.pp.DTO.UnhealthyToHealthy;
+import project.boys.pp.DTO.FoodDTO;
+import project.boys.pp.Domain.Food;
+import project.boys.pp.Domain.UnhealthyToHealthy;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -27,7 +28,7 @@ public class FoodLookupService {
 
     private final static Logger logger = Logger.getLogger(FoodLookupService.class);
 
-    public ArrayList<String> findHealthyFoodsNameByUnhealthyFoodName(String unhealthyFood){
+    public ArrayList<FoodDTO> findHealthyFoodsNameByUnhealthyFoodName(String unhealthyFood){
         logger.info("Finding healthy foods for unhealthy food name: "+ unhealthyFood );
         List<Food> foodResultSet = foodDAO.findByFoodName(unhealthyFood);
         //if the food is unknown, return null
@@ -37,7 +38,7 @@ public class FoodLookupService {
         Food result = foodResultSet.get(0);
         Long foodId = result.getFoodId();
         List<UnhealthyToHealthy> junctionResultList = uthDAO.getAllByUnhealthyFoodId(foodId);
-        ArrayList<String> allHealthyMatchesNames = new ArrayList<>();
+        ArrayList<FoodDTO> allHealthyMatchesNames = new ArrayList<>();
         //if no suggestions are found, return the empty arraylist
         if(isEmpty(junctionResultList)){
             return allHealthyMatchesNames;
@@ -49,16 +50,22 @@ public class FoodLookupService {
         List<Food> allHealthyMatches = foodDAO.findAll(idList);
         allHealthyMatchesNames = new ArrayList<>();
         for(Food healthyMatch: allHealthyMatches){
-            allHealthyMatchesNames.add(healthyMatch.getFoodName());
+            FoodDTO foodDTO = convertFoodDomainToDTO(healthyMatch);
+            allHealthyMatchesNames.add(foodDTO);
         }
         //return the populated suggestions
         return allHealthyMatchesNames;
-
     }
 
     public List<Food> findKnownFoods() {
         logger.info("Finding known foods ");
         List<Food> foodResultSet = foodDAO.findAll();
         return foodResultSet;
+    }
+
+    private FoodDTO convertFoodDomainToDTO(Food food){
+        FoodDTO foodDTO = new FoodDTO();
+        foodDTO.setFoodName(food.getFoodName());
+        return foodDTO;
     }
 }

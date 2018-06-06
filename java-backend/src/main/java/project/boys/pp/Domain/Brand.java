@@ -1,4 +1,4 @@
-package project.boys.pp.DTO;
+package project.boys.pp.Domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotBlank;

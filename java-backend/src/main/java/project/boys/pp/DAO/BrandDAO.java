@@ -1,6 +1,6 @@
 package project.boys.pp.DAO;
 
-import project.boys.pp.DTO.Brand;
+import project.boys.pp.Domain.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

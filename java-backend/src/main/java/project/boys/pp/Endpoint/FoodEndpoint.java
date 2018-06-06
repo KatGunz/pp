@@ -1,7 +1,8 @@
 package project.boys.pp.Endpoint;
 
+import project.boys.pp.DTO.FoodDTO;
 import project.boys.pp.Services.FoodLookupService;
-import project.boys.pp.DTO.Food;
+import project.boys.pp.Domain.Food;
 import com.google.gson.Gson;
 import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @CrossOrigin
@@ -25,9 +28,9 @@ public class FoodEndpoint {
 
     @ApiOperation(value = "suggests healthy food given unhealthy food")
     @RequestMapping(value = "/{unhealthyFoodName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-    public ResponseEntity<String> findHealthyFoodNameByUnhealthyFoodName(@PathVariable String unhealthyFoodName) {
+    public ResponseEntity<List<FoodDTO>> findHealthyFoodNameByUnhealthyFoodName(@PathVariable String unhealthyFoodName) {
         logger.info("Handling request for healthy food suggestion, with unhealthy food name: "+ unhealthyFoodName );
-        ArrayList<String> healthyFoods = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodName);
+        ArrayList<FoodDTO> healthyFoods = foodLookupService.findHealthyFoodsNameByUnhealthyFoodName(unhealthyFoodName);
         if(healthyFoods==null){
             logger.info("Unknown food with name: "+ unhealthyFoodName);
             return ResponseEntity.noContent().header("Unknown Food", unhealthyFoodName).build();
@@ -38,7 +41,7 @@ public class FoodEndpoint {
         }else{
             logger.info("Successfully generated a response for unhealthy food name: "+ unhealthyFoodName);
             String json = new Gson().toJson(healthyFoods);
-            return ResponseEntity.ok(json);
+            return ResponseEntity.ok(healthyFoods);
         }
     }
     @ApiOperation(value = "provides all known foods")

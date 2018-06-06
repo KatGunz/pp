@@ -1,4 +1,4 @@
-package project.boys.pp.DTO;
+package project.boys.pp.Domain;
 
 import project.boys.pp.CompositeKeys.UnhealthyToHealthyCompositeKey;
 
