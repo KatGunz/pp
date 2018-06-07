@@ -13,10 +13,10 @@ export class DashboardComponent implements OnInit {
   constructor(private foodService: FoodService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getFoods();
   }
 
-  getHeroes(): void {
+  getFoods(): void {
     this.foodService.getFoods()
       .subscribe(foods => this.foods = foods);
   }

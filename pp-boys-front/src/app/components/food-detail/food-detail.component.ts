@@ -27,8 +27,8 @@ export class FoodDetailComponent implements OnInit {
     this.getFood();
   }
   getFood():void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.foodService.getFood(id)
+    const foodName = this.route.snapshot.paramMap.get('foodName');
+    this.foodService.getFood(foodName)
       .subscribe(food=> this.food = food);
   }
   goBack():void{

@@ -20,7 +20,7 @@ export class FoodService {
   }
   private hostAndPort = 'http://localhost:8080/'
   private knownFoodsEndpoint = 'api/foodLookup/knownFoods';
-  private findFoodByIdEndpoint = 'api/foodLookup/'
+  private findFoodByNameEndpoint = 'api/foodLookup/'
 
   getFoods(): Observable<Food[]> {
     this.messageService.clear();
@@ -29,12 +29,12 @@ export class FoodService {
     return this.http.get<Food[]>(this.hostAndPort + this.knownFoodsEndpoint);
   }
 
-  getFood(id: number): Observable<Food> {
+  getFood(foodName: String): Observable<Food> {
     this.messageService.clear();
-    this.log(`fetched food id=${id}`);
+    this.log(`${foodName}`);
     // return of(FOODS.find(food=>id===food.id));
     //TODO: write this endpoint
-    return this.http.get<Food>(this.hostAndPort + this.findFoodByIdEndpoint + id);
+    return this.http.get<Food>(this.hostAndPort + this.findFoodByNameEndpoint + foodName);
   }
 
 }

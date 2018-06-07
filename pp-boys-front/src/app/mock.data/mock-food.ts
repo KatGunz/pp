@@ -1,14 +1,14 @@
 import { Food } from '../domain/Food';
 
 export const FOODS: Food[] = [
-{ id: 1, name: 'chicken' },
-{ id: 2, name: 'beef' },
-{ id: 3, name: 'pork' },
-{ id: 4, name: 'broccoli' },
-{ id: 5, name: 'spinach' },
-{ id: 6, name: 'tomatoes' },
-{ id: 7, name: 'potatoes' },
-{ id: 8, name: 'rice' },
-{ id: 9, name: 'onions' },
-{ id: 10, name: 'salmon' }
+{ foodName: 'chicken' },
+{ foodName: 'beef' },
+{ foodName: 'pork' },
+{ foodName: 'broccoli' },
+{ foodName: 'spinach' },
+{ foodName: 'tomatoes' },
+{ foodName: 'potatoes' },
+{ foodName: 'rice' },
+{ foodName: 'onions' },
+{ foodName: 'salmon' }
 ];

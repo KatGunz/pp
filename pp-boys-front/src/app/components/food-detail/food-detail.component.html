@@ -1,10 +1,10 @@
 <div *ngIf="food">
 
-  <h2>{{ food.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{food.id}}</div>
+  <h2>{{ food.foodName | uppercase }} Details</h2>
+  <!-- <div><span>id: </span>{{food.id}}</div> -->
   <div>
     <label>name:
-      <input [(ngModel)]="food.name" placeholder="name"/>
+      <input [(ngModel)]="food.foodName" placeholder="name"/>
     </label>
   </div>
   <button (click)="goBack()">go back</button>
