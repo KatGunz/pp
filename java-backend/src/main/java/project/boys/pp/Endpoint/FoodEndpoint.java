@@ -46,9 +46,9 @@ public class FoodEndpoint {
     }
     @ApiOperation(value = "provides all known foods")
     @RequestMapping(value = "/knownFoods", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-    public List<Food> knownFoodLookUp() {
+    public List<FoodDTO> knownFoodLookUp() {
         logger.info("Handling request for known foods. ");
-        List<Food> knownFoods = foodLookupService.findKnownFoods();
+        List<FoodDTO> knownFoods = foodLookupService.findKnownFoods();
         return knownFoods;
     }
 

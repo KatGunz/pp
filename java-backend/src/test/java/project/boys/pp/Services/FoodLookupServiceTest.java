@@ -92,7 +92,7 @@ public class FoodLookupServiceTest {
     public void testFindKnownFoods(){
         List<Food> knownFoods = new ArrayList<>();
         Mockito.when(foodDAO.findAll()).thenReturn(knownFoods);
-        List<Food> result = foodLookupService.findKnownFoods();
+        List<FoodDTO> result = foodLookupService.findKnownFoods();
         Mockito.verify(foodDAO).findAll();
         Mockito.verifyNoMoreInteractions(foodDAO);
         Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);

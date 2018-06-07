@@ -84,8 +84,8 @@ public class FoodEndpointTest {
 
     @Test
     public void testKnownFoodLookUp() throws Exception {
-        List<Food> foodListStub = new ArrayList<>();
-        Food food = new Food();
+        List<FoodDTO> foodListStub = new ArrayList<>();
+        FoodDTO food = new FoodDTO();
         food.setFoodName("apple");
         foodListStub.add(food);
         Mockito.when(foodLookupService.findKnownFoods()).thenReturn(foodListStub);
