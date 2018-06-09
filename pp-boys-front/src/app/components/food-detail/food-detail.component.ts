@@ -24,11 +24,11 @@ export class FoodDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getFood();
+    this.getFoodByName();
   }
-  getFood():void{
+  getFoodByName():void{
     const foodName = this.route.snapshot.paramMap.get('foodName');
-    this.foodService.getFood(foodName)
+    this.foodService.getFoodByName(foodName)
       .subscribe(food=> this.food = food);
   }
   goBack():void{

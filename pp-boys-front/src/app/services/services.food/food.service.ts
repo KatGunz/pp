@@ -19,22 +19,19 @@ export class FoodService {
     this.messageService.add('FoodService: ' + message);
   }
   private hostAndPort = 'http://localhost:8080/'
-  private knownFoodsEndpoint = 'api/foodLookup/knownFoods';
-  private findFoodByNameEndpoint = 'api/foodLookup/'
-
+  private foodEndpointBaseUrl = 'api/foodLookup/'
+  private knownFoodsEndpoint = 'knownFoods';
+  private findFoodEndpoint = 'findFood'
   getFoods(): Observable<Food[]> {
     this.messageService.clear();
     this.log('fetched foods');
     // return of(FOODS);
-    return this.http.get<Food[]>(this.hostAndPort + this.knownFoodsEndpoint);
+    return this.http.get<Food[]>(this.hostAndPort + this.foodEndpointBaseUrl + this.knownFoodsEndpoint);
   }
-
-  getFood(foodName: String): Observable<Food> {
-    this.messageService.clear();
-    this.log(`${foodName}`);
-    // return of(FOODS.find(food=>id===food.id));
-    //TODO: write this endpoint
-    return this.http.get<Food>(this.hostAndPort + this.findFoodByNameEndpoint + foodName);
+  getFoodByName(foodName: String): Observable<Food> {
+    return this.http.get<Food>(this.hostAndPort + this.foodEndpointBaseUrl + foodName);
   }
-
+  suggestFoods(unhealthyFood: String): Observable<Food[]> {
+    return this.http.get<Food[]>(this.hostAndPort + this.foodEndpointBaseUrl + unhealthyFood);
+  }
 }

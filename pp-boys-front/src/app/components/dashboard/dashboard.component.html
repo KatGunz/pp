@@ -1,8 +1,16 @@
-<h3>List of Foods</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let food of foods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
-    <div class="module food">
-      <h4>{{food.foodName}}</h4>
-    </div>
-  </a>
+  <form>
+    <span>
+      <input [(ngModel)]="unhealthyFood" type="text" placeholder="food name" [ngModelOptions]="{standalone: true}">
+      <input type="submit" value="submit" (click)="suggestFoods(unhealthyFood)">
+    </span>
+  </form>
+  <div *ngIf="healthyFoods">
+    <h3>Suggested Healthy Foods</h3>
+    <a *ngFor="let food of healthyFoods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
+      <div class="module food">
+        <h4>{{food.foodName}}</h4>
+      </div>
+    </a>
+  </div>
 </div>
