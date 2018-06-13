@@ -44,6 +44,14 @@ public class FoodEndpoint {
             return ResponseEntity.ok(healthyFoods);
         }
     }
+
+    //TODO: fill out this endpoint and create a service for it.
+    @ApiOperation(value = "provides all known foods")
+    @RequestMapping(value = "/findFood/{foodName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
+    public FoodDTO findFoodByName(@PathVariable String foodName){
+        return null;
+    }
+
     @ApiOperation(value = "provides all known foods")
     @RequestMapping(value = "/knownFoods", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     public List<FoodDTO> knownFoodLookUp() {
