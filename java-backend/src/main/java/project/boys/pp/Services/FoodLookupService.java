@@ -71,6 +71,18 @@ public class FoodLookupService {
     private FoodDTO convertFoodDomainToDTO(Food food){
         FoodDTO foodDTO = new FoodDTO();
         foodDTO.setFoodName(food.getFoodName());
+        foodDTO.setCalories(food.getCalories());
+        foodDTO.setTotalFat(food.getTotalFat());
+        foodDTO.setCholesterol(food.getCholesterol());
+        foodDTO.setSodium(food.getSodium());
+        foodDTO.setTotalCarbs(food.getTotalCarbs());
+        foodDTO.setProtein(food.getProtein());
+        foodDTO.setVitaminA(food.getVitaminA());
+        foodDTO.setVitaminB(food.getVitaminB());
+        foodDTO.setVitaminC(food.getVitaminC());
+        foodDTO.setVitaminD(food.getVitaminD());
+        foodDTO.setCalcium(food.getCalcium());
+        foodDTO.setIron(food.getIron());
         return foodDTO;
     }
 }
