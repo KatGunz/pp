@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Food } from '../../domain/food';
+import { FoodDTO } from '../../domain/food';
 import { FoodService } from '../../services/services.food/food.service';
 import { MessageService } from '../../services/services.message/message.service';
 @Component({
@@ -8,8 +8,8 @@ import { MessageService } from '../../services/services.message/message.service'
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  foods: Food[] = [];
-  healthyFoods: Food[];
+  foods: FoodDTO[] = [];
+  healthyFoods: FoodDTO[];
   unhealthyFood: String;
 
   constructor(private foodService: FoodService, private messageService: MessageService) { }
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
     this.foodService.suggestFoods(unhealthyFoods)
       .subscribe(healthyFoods => this.displayFoods(healthyFoods));
   }
-  private displayFoods(healthyFoods: Food[]) {
+  private displayFoods(healthyFoods: FoodDTO[]) {
     if(healthyFoods){
       this.healthyFoods = healthyFoods;
       this.messageService.clear();
