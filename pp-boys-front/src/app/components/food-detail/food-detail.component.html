@@ -3,9 +3,9 @@
   <h2>{{ food.foodName | uppercase }} Details</h2>
   <!-- <div><span>id: </span>{{food.id}}</div> -->
   <div>
-    <label>name:</label>
-    <br/>
-    <input [(ngModel)]="food.foodName" placeholder="name"/>
+    <label>name:
+    <span> {{food.foodName}} </span>
+    </label>
   </div>
   <button (click)="goBack()">go back</button>
 </div>

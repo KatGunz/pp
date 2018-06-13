@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Food } from '../../domain/Food';
+import { FoodDTO } from '../../domain/Food';
 import { FoodService } from '../../services/services.food/food.service';
 import { MessageService } from '../../services/services.message/message.service';
 
@@ -11,7 +11,7 @@ import { MessageService } from '../../services/services.message/message.service'
 
 export class FoodsComponent implements OnInit {
 
-  foods: Food[];
+  foods: FoodDTO[];
 
   constructor(
         private foodService: FoodService,
