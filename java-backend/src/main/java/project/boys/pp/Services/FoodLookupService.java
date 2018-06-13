@@ -58,7 +58,7 @@ public class FoodLookupService {
     }
 
     public List<FoodDTO> findKnownFoods() {
-        logger.info("Finding known foods ");
+        logger.info("Finding known foods.");
         List<FoodDTO> foodDTOList = new ArrayList<>();
         List<Food> foodResultSet = foodDAO.findAll();
         for(Food healthyMatch: foodResultSet){
@@ -68,7 +68,15 @@ public class FoodLookupService {
         return foodDTOList;
     }
 
-    private FoodDTO convertFoodDomainToDTO(Food food){
+    public FoodDTO findFood(String foodName){
+        logger.info("Finding food.");
+        Food food = new Food();
+        List<Food> foodList = foodDAO.findByFoodName(foodName);
+        food = foodList.get(0);
+        FoodDTO foodDTO = convertFoodDomainToDTO(food);
+        return foodDTO;
+    }
+    private FoodDTO convertFoodDomainToDTO(Food food) {
         FoodDTO foodDTO = new FoodDTO();
         foodDTO.setFoodName(food.getFoodName());
         foodDTO.setCalories(food.getCalories());
