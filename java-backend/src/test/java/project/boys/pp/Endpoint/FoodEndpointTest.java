@@ -98,7 +98,7 @@ public class FoodEndpointTest {
         Mockito.verifyNoMoreInteractions(foodLookupService);
     }
     @Test
-    public void testfindFoodByNameWithException() throws Exception{
+    public void testFindFoodByNameWithException() throws Exception{
         String foodName = "bacon";
         Mockito.when(foodLookupService.findFood(foodName)).thenThrow(NonUniqueResultException.class);
         mockMvc.perform(get("/api/foodLookup/findFood/" + foodName).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
