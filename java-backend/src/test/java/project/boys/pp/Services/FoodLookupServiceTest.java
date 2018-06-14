@@ -125,4 +125,18 @@ public class FoodLookupServiceTest {
         Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
     }
 
+    @Test
+    public void testFindFoodWithSuccess(){
+        String foodNameStub = "food";
+        Food foodStub = new Food();
+        foodStub.setFoodName(foodNameStub);
+        List<Food> foodListStub = new ArrayList<>();
+        foodListStub.add(foodStub);
+        Mockito.when(foodDAO.findByFoodName(foodNameStub)).thenReturn(foodListStub);
+        FoodDTO result = foodLookupService.findFood(foodNameStub);
+        Mockito.verify(foodDAO).findByFoodName(foodNameStub);
+        Mockito.verifyNoMoreInteractions(foodDAO);
+        Assert.assertNotNull(result);
+        Assert.assertEquals(foodNameStub,result.getFoodName());
+    }
 }
