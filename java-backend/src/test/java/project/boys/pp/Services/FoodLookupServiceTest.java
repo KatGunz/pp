@@ -1,7 +1,9 @@
 package project.boys.pp.Services;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -13,11 +15,16 @@ import project.boys.pp.DTO.FoodDTO;
 import project.boys.pp.Domain.Food;
 import project.boys.pp.Domain.UnhealthyToHealthy;
 
+import javax.persistence.NonUniqueResultException;
 import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FoodLookupServiceTest {
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
+
     @Mock
     private FoodDAO foodDAO;
 
@@ -98,6 +105,24 @@ public class FoodLookupServiceTest {
         Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.size()==0);
+    }
+    @Test
+    public void testFindFoodWithException(){
+        exceptionRule.expect(NonUniqueResultException.class);
+        exceptionRule.expectMessage("The queried food was not unique.");
+        String foodName = "bacon";
+        Food food = new Food();
+        Food food2 = new Food();
+        food.setFoodName(foodName);
+        food2.setFoodName(foodName);
+        List<Food> foodList = new ArrayList<>();
+        foodList.add(food);
+        foodList.add(food2);
+        Mockito.when(foodDAO.findByFoodName(foodName)).thenReturn(foodList);
+        foodLookupService.findFood(foodName);
+        Mockito.verify(foodDAO).findByFoodName(foodName);
+        Mockito.verifyNoMoreInteractions();
+        Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
     }
 
     @Test
