@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.persistence.NonUniqueResultException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,12 +54,22 @@ public class FoodEndpoint {
         return knownFoods;
     }
 
-    //TODO: fill out this endpoint and create a service for it.
     @ApiOperation(value = "provides food and its details")
     @RequestMapping(value = "/findFood/{foodName}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-    public FoodDTO findFoodByName(@PathVariable String foodName){
+    public ResponseEntity<FoodDTO> findFoodByName(@PathVariable String foodName) {
         logger.info("Handling request for food details.");
-        FoodDTO foundFood = foodLookupService.findFood(foodName);
-        return foundFood;
+        try {
+            FoodDTO foundFood = foodLookupService.findFood(foodName);
+            if (foundFood == null) {
+                logger.info("Unknown food with name: "+ foodName);
+                return ResponseEntity.noContent().header("Unknown Food", foodName).build();
+            } else {
+                logger.info("Found food with name: " + foodName);
+                return ResponseEntity.ok(foundFood);
+            }
+        } catch (NonUniqueResultException e) {
+            logger.info("Food is not unique: "+ foodName);
+            return ResponseEntity.status(500).header("Server Error, non-unique food name", foodName).build();
+        }
     }
 }

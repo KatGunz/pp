@@ -10,6 +10,7 @@ import project.boys.pp.Domain.Food;
 import project.boys.pp.Domain.UnhealthyToHealthy;
 
 import javax.inject.Inject;
+import javax.persistence.NonUniqueResultException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,9 +73,15 @@ public class FoodLookupService {
         logger.info("Finding food.");
         Food food = new Food();
         List<Food> foodList = foodDAO.findByFoodName(foodName);
-        food = foodList.get(0);
-        FoodDTO foodDTO = convertFoodDomainToDTO(food);
-        return foodDTO;
+        if(foodList.size()<1){
+            return null;
+        }else if(foodList.size()>1){
+            throw new NonUniqueResultException("The queried food was not unique.");
+        }else{
+            food = foodList.get(0);
+            FoodDTO foodDTO = convertFoodDomainToDTO(food);
+            return foodDTO;
+        }
     }
     private FoodDTO convertFoodDomainToDTO(Food food) {
         FoodDTO foodDTO = new FoodDTO();
