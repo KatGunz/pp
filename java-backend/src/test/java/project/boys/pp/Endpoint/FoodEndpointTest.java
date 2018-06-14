@@ -97,16 +97,18 @@ public class FoodEndpointTest {
         Mockito.verify(foodLookupService).findKnownFoods();
         Mockito.verifyNoMoreInteractions(foodLookupService);
     }
+
     @Test
-    public void testFindFoodByNameWithException() throws Exception{
-        String foodName = "bacon";
-        Mockito.when(foodLookupService.findFood(foodName)).thenThrow(NonUniqueResultException.class);
-        mockMvc.perform(get("/api/foodLookup/findFood/" + foodName).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(status().is(500))
-                .andExpect(header().stringValues("Server Error, non-unique food name", foodName));
-        Mockito.verify(foodLookupService).findFood(foodName);
+    public void testFindFoodByNameWithUnknownFood() throws Exception {
+        String unknownFoodStub = "unknown food";
+        Mockito.when(foodLookupService.findFood(unknownFoodStub)).thenReturn(null);
+        mockMvc.perform(get("/api/foodLookup/findFood/" + unknownFoodStub).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isNoContent())
+                .andExpect(header().stringValues("Unknown Food", unknownFoodStub));
+        Mockito.verify(foodLookupService).findFood(unknownFoodStub);
         Mockito.verifyNoMoreInteractions(foodLookupService);
     }
+
     @Test
     public void testFindFoodByNameWithSuccess() throws Exception{
         String foodNameStub = "food";
@@ -118,6 +120,17 @@ public class FoodEndpointTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(content().json(new Gson().toJson(foodDTOStub)));
         Mockito.verify(foodLookupService).findFood(foodNameStub);
+        Mockito.verifyNoMoreInteractions(foodLookupService);
+    }
+
+    @Test
+    public void testFindFoodByNameWithException() throws Exception{
+        String foodName = "bacon";
+        Mockito.when(foodLookupService.findFood(foodName)).thenThrow(NonUniqueResultException.class);
+        mockMvc.perform(get("/api/foodLookup/findFood/" + foodName).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().is(500))
+                .andExpect(header().stringValues("Server Error, non-unique food name", foodName));
+        Mockito.verify(foodLookupService).findFood(foodName);
         Mockito.verifyNoMoreInteractions(foodLookupService);
     }
 }

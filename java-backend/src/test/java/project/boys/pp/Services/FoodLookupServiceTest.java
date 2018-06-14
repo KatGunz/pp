@@ -45,6 +45,7 @@ public class FoodLookupServiceTest {
         Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
         Assert.assertNull(result);
     }
+
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithNoSuggestions(){
         ArrayList<FoodDTO> result;
@@ -64,6 +65,7 @@ public class FoodLookupServiceTest {
         Assert.assertNotNull(result);
         Assert.assertTrue(result.size()==0);
     }
+
     @Test
     public void testFindHealthyFoodsNameByUnhealthyFoodNameWithSuggestions(){
         ArrayList<FoodDTO> result;
@@ -95,6 +97,7 @@ public class FoodLookupServiceTest {
         Assert.assertTrue(result.size()==1);
         Assert.assertEquals(healthyFoodName,result.get(0).getFoodName());
     }
+
     @Test
     public void testFindKnownFoods(){
         List<Food> knownFoods = new ArrayList<>();
@@ -106,6 +109,34 @@ public class FoodLookupServiceTest {
         Assert.assertNotNull(result);
         Assert.assertTrue(result.size()==0);
     }
+
+    @Test
+    public void testFindFoodWithUnknownFood() {
+        String unknownFoodStub = "unknown food";
+        Mockito.when(foodDAO.findByFoodName(unknownFoodStub)).thenReturn(null);
+        FoodDTO result = foodLookupService.findFood(unknownFoodStub);
+        Mockito.verify(foodDAO).findByFoodName(unknownFoodStub);
+        Mockito.verifyNoMoreInteractions(foodDAO);
+        Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
+        Assert.assertNull(result);
+    }
+
+    @Test
+    public void testFindFoodWithSuccess(){
+        String foodNameStub = "food";
+        Food foodStub = new Food();
+        foodStub.setFoodName(foodNameStub);
+        List<Food> foodListStub = new ArrayList<>();
+        foodListStub.add(foodStub);
+        Mockito.when(foodDAO.findByFoodName(foodNameStub)).thenReturn(foodListStub);
+        FoodDTO result = foodLookupService.findFood(foodNameStub);
+        Mockito.verify(foodDAO).findByFoodName(foodNameStub);
+        Mockito.verifyNoMoreInteractions(foodDAO);
+        Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
+        Assert.assertNotNull(result);
+        Assert.assertEquals(foodNameStub,result.getFoodName());
+    }
+
     @Test
     public void testFindFoodWithException(){
         exceptionRule.expect(NonUniqueResultException.class);
@@ -123,20 +154,5 @@ public class FoodLookupServiceTest {
         Mockito.verify(foodDAO).findByFoodName(foodName);
         Mockito.verifyNoMoreInteractions();
         Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
-    }
-
-    @Test
-    public void testFindFoodWithSuccess(){
-        String foodNameStub = "food";
-        Food foodStub = new Food();
-        foodStub.setFoodName(foodNameStub);
-        List<Food> foodListStub = new ArrayList<>();
-        foodListStub.add(foodStub);
-        Mockito.when(foodDAO.findByFoodName(foodNameStub)).thenReturn(foodListStub);
-        FoodDTO result = foodLookupService.findFood(foodNameStub);
-        Mockito.verify(foodDAO).findByFoodName(foodNameStub);
-        Mockito.verifyNoMoreInteractions(foodDAO);
-        Assert.assertNotNull(result);
-        Assert.assertEquals(foodNameStub,result.getFoodName());
     }
 }
