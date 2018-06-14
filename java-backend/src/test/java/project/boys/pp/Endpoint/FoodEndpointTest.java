@@ -2,7 +2,9 @@ package project.boys.pp.Endpoint;
 
 import com.google.gson.Gson;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -13,21 +15,20 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import project.boys.pp.DTO.FoodDTO;
-import project.boys.pp.Domain.Food;
 import project.boys.pp.Services.FoodLookupService;
 
+import javax.persistence.NonUniqueResultException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FoodEndpointTest {
 
     private MockMvc mockMvc;
+
 
     @Mock
     private FoodLookupService foodLookupService;
@@ -105,6 +106,31 @@ public class FoodEndpointTest {
                 .andExpect(status().isNoContent())
                 .andExpect(header().stringValues("Unknown Food", unknownFoodStub));
         Mockito.verify(foodLookupService).findFood(unknownFoodStub);
+        Mockito.verifyNoMoreInteractions(foodLookupService);
+    }
+
+    @Test
+    public void testFindFoodByNameWithSuccess() throws Exception{
+        String foodNameStub = "food";
+        FoodDTO foodDTOStub = new FoodDTO();
+        foodDTOStub.setFoodName(foodNameStub);
+        Mockito.when(foodLookupService.findFood(foodNameStub)).thenReturn(foodDTOStub);
+        mockMvc.perform(get("/api/foodLookup/findFood/" + foodNameStub).accept(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(content().json(new Gson().toJson(foodDTOStub)));
+        Mockito.verify(foodLookupService).findFood(foodNameStub);
+        Mockito.verifyNoMoreInteractions(foodLookupService);
+    }
+
+    @Test
+    public void testFindFoodByNameWithException() throws Exception{
+        String foodName = "bacon";
+        Mockito.when(foodLookupService.findFood(foodName)).thenThrow(NonUniqueResultException.class);
+        mockMvc.perform(get("/api/foodLookup/findFood/" + foodName).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().is(500))
+                .andExpect(header().stringValues("Server Error, non-unique food name", foodName));
+        Mockito.verify(foodLookupService).findFood(foodName);
         Mockito.verifyNoMoreInteractions(foodLookupService);
     }
 }
