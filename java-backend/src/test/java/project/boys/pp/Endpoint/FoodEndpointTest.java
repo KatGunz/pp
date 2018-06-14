@@ -13,16 +13,13 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import project.boys.pp.DTO.FoodDTO;
-import project.boys.pp.Domain.Food;
 import project.boys.pp.Services.FoodLookupService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FoodEndpointTest {
@@ -97,4 +94,17 @@ public class FoodEndpointTest {
         Mockito.verifyNoMoreInteractions(foodLookupService);
     }
 
+    @Test
+    public void testFindFoodByNameWithSuccess() throws Exception{
+        String foodNameStub = "food";
+        FoodDTO foodDTOStub = new FoodDTO();
+        foodDTOStub.setFoodName(foodNameStub);
+        Mockito.when(foodLookupService.findFood(foodNameStub)).thenReturn(foodDTOStub);
+        mockMvc.perform(get("/api/foodLookup/findFood/" + foodNameStub).accept(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(content().json(new Gson().toJson(foodDTOStub)));
+        Mockito.verify(foodLookupService).findFood(foodNameStub);
+        Mockito.verifyNoMoreInteractions(foodLookupService);
+    }
 }
