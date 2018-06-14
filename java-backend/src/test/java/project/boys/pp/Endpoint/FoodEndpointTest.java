@@ -97,4 +97,14 @@ public class FoodEndpointTest {
         Mockito.verifyNoMoreInteractions(foodLookupService);
     }
 
+    @Test
+    public void testFindFoodByNameWithUnknownFood() throws Exception {
+        String unknownFoodStub = "unknown food";
+        Mockito.when(foodLookupService.findFood(unknownFoodStub)).thenReturn(null);
+        mockMvc.perform(get("/api/foodLookup/findFood/" + unknownFoodStub).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isNoContent())
+                .andExpect(header().stringValues("Unknown Food", unknownFoodStub));
+        Mockito.verify(foodLookupService).findFood(unknownFoodStub);
+        Mockito.verifyNoMoreInteractions(foodLookupService);
+    }
 }

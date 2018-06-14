@@ -100,4 +100,14 @@ public class FoodLookupServiceTest {
         Assert.assertTrue(result.size()==0);
     }
 
+    @Test
+    public void testFindFoodWithUnknownFood(){
+        String unknownFoodStub = "unknown food";
+        Mockito.when(foodDAO.findByFoodName(unknownFoodStub)).thenReturn(null);
+        FoodDTO result = foodLookupService.findFood(unknownFoodStub);
+        Mockito.verify(foodDAO).findByFoodName(unknownFoodStub);
+        Mockito.verifyNoMoreInteractions(foodDAO);
+        Mockito.verifyZeroInteractions(unhealthyToHealthyDAO);
+        Assert.assertNull(result);
+    }
 }

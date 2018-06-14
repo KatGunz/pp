@@ -73,7 +73,7 @@ public class FoodLookupService {
         logger.info("Finding food.");
         Food food = new Food();
         List<Food> foodList = foodDAO.findByFoodName(foodName);
-        if(foodList.size()<1){
+        if(foodList == null || foodList.size()<1){
             return null;
         }else if(foodList.size()>1){
             throw new NonUniqueResultException("The queried food was not unique.");
