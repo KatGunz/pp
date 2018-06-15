@@ -29,6 +29,12 @@ button:disabled {
   color: #ccc;
   cursor: auto;
 }
+
 ul{
-  margin: 0 auto;
+  display:table; 
+  margin:0 auto;
+}
+
+span{
+  padding-left: 3em;
 }

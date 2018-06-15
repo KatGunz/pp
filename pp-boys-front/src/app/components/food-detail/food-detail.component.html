@@ -1,12 +1,11 @@
 <div *ngIf="food">
 
-  <h2>{{ food.foodName | uppercase }} Details</h2>
+  <h2>{{ food.foodName }} Details</h2>
   <!-- <div><span>id: </span>{{food.id}}</div> -->
   <div>
-    <label>name: </label> <span> {{food.foodName}} </span>
-    <ul>
+    <ul style="list-style-type:none">
       <li>
-        <label>Calories: </label> {{food.calories}}
+        <label>Calories: </label> <span> {{food.calories}} </span>
       </li>
       <li>
         <label>Total Fat: </label> <span> {{food.totalFat}} </span>
