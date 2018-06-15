@@ -3,11 +3,13 @@
   list-style-type: none;
   padding: 0;
   width: 15em;
+  display:table; 
+  margin:0 auto;
 }
 .foods li {
   position: relative;
   cursor: pointer;
-  background-color: #EEE;
+  background-color: rgb(50, 162, 206);
   margin: .5em;
   padding: .3em 0;
   height: 1.6em;
@@ -15,13 +17,13 @@
 }
  
 .foods li:hover {
-  color: #607D8B;
-  background-color: #DDD;
+  color: rgb(255, 255, 255);
+  background-color: rgb(50, 162, 206);
   left: .1em;
 }
  
 .foods a {
-  color: #888;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   position: relative;
   display: block;
@@ -29,15 +31,15 @@
 }
  
 .foods a:hover {
-  color:#607D8B;
+  color:rgb(50, 162, 206);;
 }
  
 .foods .badge {
   display: inline-block;
   font-size: small;
-  color: white;
+  color: rgb(241, 237, 237);
   padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
+  background-color: rgb(50, 162, 206);
   line-height: 1em;
   position: relative;
   left: -1px;

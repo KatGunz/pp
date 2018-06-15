@@ -1,7 +1,7 @@
 <div class="grid grid-pad">
-  <form>
+  <form class = "search-bar">
     <span>
-      <input [(ngModel)]="unhealthyFood" type="text" placeholder="food name" [ngModelOptions]="{standalone: true}">
+      <input [(ngModel)]="unhealthyFood" type="text" placeholder="food name" [ngModelOptions]="{standalone: true} " >
       <input type="submit" value="submit" (click)="suggestFoods(unhealthyFood)">
     </span>
   </form>
