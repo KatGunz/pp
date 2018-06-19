@@ -5,7 +5,7 @@
       <span class = "search-bar">
         <br>
         <input id = "search-box" [(ngModel)]="unhealthyFood" type="text" placeholder="food name" [ngModelOptions]="{standalone: true} "  >
-        <button type="button" value="submit" (click)="suggestFoods(unhealthyFood)"> submit </button>
+        <input type="submit" value="submit" (click)="suggestFoods(unhealthyFood)">
       </span>
     </form>
   </div>

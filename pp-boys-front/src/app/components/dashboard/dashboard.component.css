@@ -76,9 +76,10 @@ body, html {
   padding: 1em;
 }
 input {
+  border-radius: .5em;
   height: 3em;
   font-weight: bold;
 }
-button {
-  height: 3em;
+input:focus {
+  outline:none;
 }
