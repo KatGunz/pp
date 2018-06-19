@@ -21,13 +21,10 @@ h3 {
 h4 {
   position: relative;
 }
-
 body, html {
   height: 100%;
   display: grid;
 }
-
-
 .grid {
   margin: 0;
 }
@@ -54,7 +51,6 @@ body, html {
 .grid-pad > [class*='col-']:last-of-type {
   padding-right: 20px;
 }
-
 @media (max-width: 600px) {
   .module {
     font-size: 10px;
@@ -67,4 +63,22 @@ body, html {
   .module {
     min-width: 60px;
   }
+}
+.frontpage {
+  vertical-align: 0px;
+}
+#logo {
+  width:400px;
+  height: 190px;
+}
+#search-box {
+  width: 30em;
+  padding: 1em;
+}
+input {
+  height: 3em;
+  font-weight: bold;
+}
+button {
+  height: 3em;
 }

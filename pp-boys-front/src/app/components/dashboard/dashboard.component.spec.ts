@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Food } from '../../domain/food';
+import { FoodDTO } from '../../domain/food';
 import { FoodService } from '../../services/services.food/food.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { FoodService } from '../../services/services.food/food.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  foods: Food[] = [];
+  foods: FoodDTO[] = [];
 
   constructor(private foodService: FoodService) { }
 

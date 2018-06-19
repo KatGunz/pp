@@ -1,10 +1,14 @@
 <div class="grid grid-pad">
-  <form class = "search-bar">
-    <span>
-      <input [(ngModel)]="unhealthyFood" type="text" placeholder="food name" [ngModelOptions]="{standalone: true} " >
-      <input type="submit" value="submit" (click)="suggestFoods(unhealthyFood)">
-    </span>
-  </form>
+  <div class = "frontpage">
+    <img id = "logo" src="/../../../assets/Logo1.png" alt="potato-transformation">
+    <form>
+      <span class = "search-bar">
+        <br>
+        <input id = "search-box" [(ngModel)]="unhealthyFood" type="text" placeholder="food name" [ngModelOptions]="{standalone: true} "  >
+        <button type="button" value="submit" (click)="suggestFoods(unhealthyFood)"> submit </button>
+      </span>
+    </form>
+  </div>
   <div *ngIf="healthyFoods">
     <h3>Suggested Healthy Foods</h3>
     <a *ngFor="let food of healthyFoods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
