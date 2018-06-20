@@ -1,4 +1,4 @@
-/* AppComponent's private CSS styles */
+/* AppComponent's private CSS styles 
 h1 {
   font-size: 1.2em;
   color: #999;
@@ -26,4 +26,7 @@ nav a:hover {
 }
 nav a.active {
   color: #039be5;
+}*/
+.navbar{
+  background-color: #89b6d6;
 }
