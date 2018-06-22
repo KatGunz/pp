@@ -1,5 +1,5 @@
 /* DashboardComponent's private CSS styles */
-[class*='col-'] {
+/* [class*='col-'] {
   float: left;
   padding-right: 20px;
   padding-bottom: 20px;
@@ -82,4 +82,37 @@ input {
 }
 input:focus {
   outline:none;
+} */
+#logo {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+.input-group mb-3 {
+  margin: auto;
+}
+.input-group-append {
+  position: relative;
+  left: 31%;
+  width: 67%;
+}
+.form-control {
+  position: relative;
+  left: 31%;
+}
+/* .btn-outline-info:hover {
+  background-color: #89b6d6;
+}
+.btn-outline-info:valid{
+  color: #89b6d6;
+} */
+.btn-outline-secondary,
+.btn-outline-secondary:hover,
+.btn-outline-secondary:active,
+.btn-outline-secondary:visited,
+.btn-outline-secondary:focus {
+    background-color: #89b6d6 !important;
+    border-color: #326b94 !important;
 }
