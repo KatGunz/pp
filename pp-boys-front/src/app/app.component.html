@@ -1,25 +1,33 @@
-<div>
-  <!-- <h1>
-    Welcome to {{ title }}!
-  </h1> -->
-  <nav class = "navbar navbar-expand-lg navbar-light">
-    <span class = "navbar-brand">NavBar</span>
-    <div class="collapse navbar-collapse">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand">FoodConversion</span>
+    </div>
+    <div class="collapse navbar-collapse" id="collapsed-navbar"> 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/dashboard">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link text-light" routerLink="/dashboard">Home</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/foods">Foods</a>
-          </li>
+        <li class="nav-item active">
+          <a class="nav-link text-light" routerLink="/foods">Foods</a>
+        </li>
       </ul>
-      <!-- <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/foods">Foods</a> -->
+      <form class="form-inline my-2 my-lg-0 navbar-form-search">
+        <input class="form-control search-form-container" type="search" placeholder="Search" aria-label="Search">
+        <!-- [(ngModel)]="unhealthyFood"  [ngModelOptions]="{standalone: true}" -->
+      </form>
     </div>
-    
-  </nav>
-  <router-outlet></router-outlet>
-  <app-messages></app-messages>
-</div>
+  </div>
+</nav>
 
+<!-- <div *ngIf="healthyFoods">
+  <h3>Suggested Healthy Foods</h3>
+  <a *ngFor="let food of healthyFoods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
+    <div class="module food">
+      <h4>{{food.foodName}}</h4>
+    </div>
+  </a>
+</div> -->
 
+<router-outlet></router-outlet>
+<app-messages></app-messages>

@@ -1,32 +1,20 @@
-/* AppComponent's private CSS styles 
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
+.navbar-brand{
+  color: rgb(255, 255, 255);
+  font-size: x-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
+.navbar-brand:hover{
+  color: rgb(255, 255, 255);
 }
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
-}*/
 .navbar{
   background-color: #89b6d6;
+}
+.form-inline{
+  margin: auto;
+}
+.form-control{
+  /* position: relative; */
+  width: 25em;
+  margin-left: 120%;
+
 }
