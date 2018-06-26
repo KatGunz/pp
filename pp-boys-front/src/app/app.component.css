@@ -10,11 +10,8 @@
   background-color: #89b6d6;
 }
 .form-inline{
-  margin: auto;
+  margin-right: 3em;
 }
 .form-control{
-  /* position: relative; */
-  width: 25em;
-  margin-left: 120%;
-
+  width: 13em;
 }
