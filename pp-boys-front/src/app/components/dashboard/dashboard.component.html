@@ -1,37 +1,19 @@
-<!-- <div class="grid grid-pad">
-  <div class = "frontpage">
-    <img id = "logo" src="/../../../assets/Logo1.png" alt="potato-transformation">
-    <form>
-      <span class = "search-bar">
-        <br>
-        <input id = "search-box" [(ngModel)]="unhealthyFood" type="text" placeholder="food name" [ngModelOptions]="{standalone: true} "  >
-        <input type="submit" value="submit" (click)="suggestFoods(unhealthyFood)">
-      </span>
-    </form>
-  </div>
-  <div *ngIf="healthyFoods">
-    <h3>Suggested Healthy Foods</h3>
-    <a *ngFor="let food of healthyFoods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
-      <div class="module food">
-        <h4>{{food.foodName}}</h4>
-      </div>
-    </a>
-  </div>
-</div> -->
 <img id = "logo" src="/../../../assets/Logo1.png" alt="potato-transformation">
 <span><br>
-  <div class="input-group mb-3">
+  <form>
+    <div class="input-group mb-3">
       <input type="text" class="form-control" [(ngModel)]="unhealthyFood" placeholder="Request a Food" aria-label="Request a Food" aria-describedby="basic-addon2" [ngModelOptions]="{standalone: true}">
-   <div class="input-group-append">
-      <input type="submit" class="btn btn-outline-secondary" value="Search" (click)="suggestFoods(unhealthyFood)">
+      <div class="input-group-append">
+        <input type="submit" class="btn btn-outline-light" value="Search" (click)="suggestFoods(unhealthyFood)">
+      </div>
     </div>
-  </div>
+  </form>
 </span>
 <div *ngIf="healthyFoods">
-    <h3>Suggested Healthy Foods</h3>
-    <a *ngFor="let food of healthyFoods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
-      <div class="module food">
-        <h4>{{food.foodName}}</h4>
-      </div>
-    </a>
-  </div>
+  <h3>Suggested Healthy Foods</h3>
+  <a *ngFor="let food of healthyFoods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
+    <div class="module food">
+      <h4>{{food.foodName}}</h4>
+    </div>
+  </a>
+</div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FoodDTO } from '../../domain/food';
 import { FoodService } from '../../services/services.food/food.service';
 import { MessageService } from '../../services/services.message/message.service';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,7 +14,10 @@ export class DashboardComponent implements OnInit {
   healthyFoods: FoodDTO[];
   unhealthyFood: String;
 
-  constructor(private foodService: FoodService, private messageService: MessageService) { }
+  constructor(
+    private foodService: FoodService,
+    private messageService: MessageService,
+    private matSnackBar: MatSnackBar) {}
  
   ngOnInit() {
   }
