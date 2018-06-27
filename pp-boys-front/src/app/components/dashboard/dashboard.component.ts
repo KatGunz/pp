@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodDTO } from '../../domain/food';
 import { FoodService } from '../../services/services.food/food.service';
-import { MessageService } from '../../services/services.message/message.service';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,8 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private foodService: FoodService,
-    private messageService: MessageService,
-    private matSnackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar) {}
  
   ngOnInit() {
   }
@@ -29,11 +27,10 @@ export class DashboardComponent implements OnInit {
   private displayFoods(healthyFoods: FoodDTO[]) {
     if(healthyFoods){
       this.healthyFoods = healthyFoods;
-      this.messageService.clear();
-      this.messageService.add("Search Successful.");
     }else{
-        this.messageService.clear();
-        this.messageService.add("No Results Found.");
+        this.snackBar.open("No Results Found.", null, {
+          duration: 3000
+        });
     }
   }
 }
