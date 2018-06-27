@@ -6,15 +6,21 @@
     <div class="collapse navbar-collapse" id="collapsed-navbar"> 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link text-light" routerLink="/dashboard">Home</a>
+          <a class="nav-link text-light" routerLink="/dashboard">
+            <i class="material-icons">home</i>
+          </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link text-light" routerLink="/foods">Foods</a>
+          <a class="nav-link text-light" routerLink="/foods">
+            <i class="material-icons">local_dining</i>
+          </a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0 navbar-form-search">
         <input class="form-control search-form-container" type="search" placeholder="Search" aria-label="Search">
-        <button type="submit" class="btn btn-default" id="search-button"><span class="fa fa-search" aria-hidden="true"></span></button>
+        <button mat-raised-button>
+          <i class="material-icons">search</i>
+        </button>
       </form>
     </div>
   </div>

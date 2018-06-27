@@ -18,3 +18,9 @@
 .form-control{
   width: 13em;
 }
+button{
+  color: #2d3235;
+  outline: none;
+  min-width: 20%;
+  width: 20%;
+}

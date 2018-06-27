@@ -1,19 +1,13 @@
-<img id = "logo" src="/../../../assets/Logo1.png" alt="potato-transformation"  (click) = "openSnackBar()">
+<img id = "logo" src="/../../../assets/Logo1.png" alt="potato-transformation">
 <span><br>
   <form>
     <div class="input-group mb-3">
-      <input type="text" class="form-control" [(ngModel)]="unhealthyFood" placeholder="Request a Food" aria-label="Request a Food" aria-describedby="basic-addon2" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" (src)="searchQuery" placeholder="Request a Food" aria-label="Request a Food" aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <input type="submit" class="btn btn-outline-light" value="Search" (click)="suggestFoods(unhealthyFood)">
+        <a routerLink="/suggested-foods">
+          <input type="submit" class="btn btn-outline-light" value="Search">
+        </a> 
       </div>
     </div>
   </form>
 </span>
-<div *ngIf="healthyFoods">
-  <h3>Suggested Healthy Foods</h3>
-  <a *ngFor="let food of healthyFoods" class="col-1-4" routerLink = "/food-details/{{food.foodName}}">
-    <div class="module food">
-      <h4>{{food.foodName}}</h4>
-    </div>
-  </a>
-</div>
