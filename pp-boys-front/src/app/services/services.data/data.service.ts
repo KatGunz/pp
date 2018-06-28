@@ -9,18 +9,12 @@ export class DataService {
   // from dashboard component to suggested-foods component
   foodResultCubby: FoodDTO[] = null;
 
-  addToFoodResultCubby(data: FoodDTO[]): boolean {
-    if(this.foodResultCubby){
-      // returns false if cubby is full
-      return false;
-    }else{
-      this.foodResultCubby = data;
-    }
+  assignToFoodResultCubby(data: FoodDTO[]): void {
+    this.foodResultCubby = data;
   }
-  removeFromFoodResultCubby(): FoodDTO[] {
+  readFoodResultCubby(): FoodDTO[] {
     //returns null if cubby is empty
     var foods: FoodDTO[] = this.foodResultCubby;
-    this.foodResultCubby = null;
     return foods;
   }
 }

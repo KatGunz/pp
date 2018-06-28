@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FoodService } from '../../services/services.food/food.service'; 
 import { FoodDTO } from '../../domain/Food';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
 import { DataService } from '../../services/services.data/data.service';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-suggested-foods',
@@ -12,16 +11,18 @@ import { DataService } from '../../services/services.data/data.service';
 })
 export class SuggestedFoodsComponent implements OnInit {
   healthyFoods: FoodDTO[];
+  // dataSource = new MatTableDataSource();
+  dataSource: MatTableDataSource<FoodDTO>;
+  foodNameColumn = ['foodName', 'calories', 'totalCarbs', 'totalFat'];
 
   constructor(
     private location: Location,
-    private foodService: FoodService,
-    private snackBar: MatSnackBar,
     private dataService: DataService
   ) { }
 
   ngOnInit() {
-    this.healthyFoods = this.dataService.removeFromFoodResultCubby();
+    this.healthyFoods = this.dataService.readFoodResultCubby();
+    this.dataSource = new MatTableDataSource(this.healthyFoods);
   }
   goBack():void{
     this.location.back();

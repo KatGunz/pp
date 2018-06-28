@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { FoodsComponent } from './components/foods/foods.component';
@@ -28,7 +29,8 @@ import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-
     AppRoutingModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

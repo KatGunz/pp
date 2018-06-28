@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   private passResults(healthyFoods: FoodDTO[]): void {
     if(healthyFoods){
       this.healthyFoods = healthyFoods;
-      var isFull = this.dataService.addToFoodResultCubby(healthyFoods);
+      var isFull = this.dataService.assignToFoodResultCubby(healthyFoods);
       if(isFull){
         console.log("Cubby was full!");
         return;
