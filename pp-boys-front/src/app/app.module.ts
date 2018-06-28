@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { FoodDetailComponent } from './components/food-detail/food-detail.component';
-import { MessagesComponent } from './components/messages/messages.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-foods.component';
 
@@ -19,7 +18,6 @@ import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-
     AppComponent,
     FoodsComponent,
     FoodDetailComponent,
-    MessagesComponent,
     DashboardComponent,
     SuggestedFoodsComponent
   ],

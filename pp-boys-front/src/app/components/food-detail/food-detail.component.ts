@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FoodDTO } from '../../domain/Food';
 import { FoodService } from '../../services/services.food/food.service';
-import { MessageService } from '../../services/services.message/message.service'
 
 @Component({
   selector: 'app-food-detail',
@@ -19,7 +18,6 @@ export class FoodDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private foodService: FoodService,
-    private messageService: MessageService
   ) { }
 
   ngOnInit() {

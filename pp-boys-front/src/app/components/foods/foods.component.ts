@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodDTO } from '../../domain/Food';
 import { FoodService } from '../../services/services.food/food.service';
-import { MessageService } from '../../services/services.message/message.service';
 
 @Component({
   selector: 'app-foods',
@@ -14,8 +13,7 @@ export class FoodsComponent implements OnInit {
   foods: FoodDTO[];
 
   constructor(
-        private foodService: FoodService,
-        private messageService: MessageService) { }
+        private foodService: FoodService) { }
 
   ngOnInit() {
     this.getFoods();

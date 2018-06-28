@@ -1,12 +1,10 @@
 <img id = "logo" src="/../../../assets/Logo1.png" alt="potato-transformation">
 <span><br>
-  <form>
+  <form #f="ngForm" (ngSubmit)="onSubmit(searchQuery.value)">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" (src)="searchQuery" placeholder="Request a Food" aria-label="Request a Food" aria-describedby="basic-addon2">
+      <input type="text" class="form-control" #searchQuery placeholder="Request a Food" aria-label="Request a Food" aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <a routerLink="/suggested-foods">
           <input type="submit" class="btn btn-outline-light" value="Search">
-        </a> 
       </div>
     </div>
   </form>

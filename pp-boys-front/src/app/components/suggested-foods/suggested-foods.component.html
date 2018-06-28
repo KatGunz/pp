@@ -1,3 +1,8 @@
-<p>
-  suggested-foods works!
-</p>
+<ul class="foods">
+  <li *ngFor="let food of healthyFoods">
+    <a routerLink="/food-details/{{food.foodName}}" >
+      <span class="badge">{{food.foodName}}</span>
+    </a>
+  </li>
+</ul>
+<button (click)="goBack()">Back</button>
