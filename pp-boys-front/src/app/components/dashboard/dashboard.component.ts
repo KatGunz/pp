@@ -25,6 +25,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
   private onSubmit(searchQuery: string): void {
+    if(!searchQuery){
+      return;
+    }
     this.searchQuery = searchQuery;
     this.suggestFoods(this.searchQuery);
   }
