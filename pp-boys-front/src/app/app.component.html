@@ -16,8 +16,8 @@
           </a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0 navbar-form-search">
-        <input class="form-control search-form-container" type="search" placeholder="Search" aria-label="Search">
+      <form #f="ngForm" (ngSubmit)="onSubmit(searchQuery.value)" class="form-inline my-2 my-lg-0 navbar-form-search">
+        <input class="form-control search-form-container" type="search" #searchQuery placeholder="Search" aria-label="Search">
         <button mat-raised-button>
           <i class="material-icons">search</i>
         </button>

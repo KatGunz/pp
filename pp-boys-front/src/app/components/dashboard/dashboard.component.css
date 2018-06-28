@@ -5,8 +5,12 @@
   margin-right: auto;
   width: 40%;
 }
+textarea:focus, input:focus{
+  outline: none;
+}
 .input-group mb-3 {
   margin: auto;
+  width: 50%;
 }
 .input-group-append {
   position: relative;
@@ -17,6 +21,9 @@
   position: relative;
   left: 31%;
 }
+.form-control:focus{
+  box-shadow: none;
+}
 .btn-outline-light,
 .btn-outline-light:hover,
 .btn-outline-light:active,
@@ -24,4 +31,9 @@
 .btn-outline-light:focus {
     background-color: #89b6d6 !important;
     border-color: #89b6d6 !important;
+}
+#dashboard-search-button {
+ color: black;
+ background-color: #89b6d6;
+ outline: none;
 }

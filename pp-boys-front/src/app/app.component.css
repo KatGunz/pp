@@ -18,6 +18,9 @@
 .form-control{
   width: 13em;
 }
+.form-control:focus{
+  box-shadow: none;
+}
 button{
   color: #2d3235;
   outline: none;
