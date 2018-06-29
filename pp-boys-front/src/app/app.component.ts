@@ -37,15 +37,20 @@ export class AppComponent implements OnInit{
       .subscribe(healthyFoods => this.passResults(healthyFoods));
   }
   private passResults(healthyFoods: FoodDTO[]): void {
-    if(healthyFoods){
-      this.healthyFoods = healthyFoods;
-      this.dataService.assignToFoodResultCubby(healthyFoods);
-      this.router.navigate([`suggested-foods/${this.searchQuery}`]);
-    }
-    else{
-      this.snackBar.open("No Results Found.", null, {
-        duration: 3000
-      });
+    if(this.router.url === 'suggested-foods'){
+      //TODO: fix this line
+      this.child.healthyFoods = healthyFoods;
+    }else{
+      if(healthyFoods){
+        this.healthyFoods = healthyFoods;
+        this.dataService.assignToFoodResultCubby(healthyFoods);
+        this.router.navigate([`suggested-foods`]);
+      }
+      else{
+        this.snackBar.open("No Results Found.", null, {
+          duration: 3000
+        });
+      }
     }
   }
   

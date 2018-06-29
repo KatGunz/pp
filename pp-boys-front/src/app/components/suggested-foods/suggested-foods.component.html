@@ -1,8 +1,11 @@
-
 <table mat-table [dataSource]="this.dataSource">
   <ng-container matColumnDef="foodName">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Food </th>
-    <td mat-cell *matCellDef="let food"> {{food.foodName}} </td>
+      <td mat-cell *matCellDef="let food">
+        <a routerLink="/food-details/{{food.foodName}}" > 
+          {{food.foodName}}
+        </a>
+      </td>
   </ng-container>
   <ng-container matColumnDef="calories">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Calories </th>

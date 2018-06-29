@@ -38,12 +38,8 @@ export class DashboardComponent implements OnInit {
   private passResults(healthyFoods: FoodDTO[]): void {
     if(healthyFoods){
       this.healthyFoods = healthyFoods;
-      var isFull = this.dataService.assignToFoodResultCubby(healthyFoods);
-      if(isFull){
-        console.log("Cubby was full!");
-        return;
-      }
-      this.router.navigate([`suggested-foods/${this.searchQuery}`]);
+      this.dataService.assignToFoodResultCubby(healthyFoods);
+      this.router.navigate([`suggested-foods`]);
     }
     else{
       this.snackBar.open("No Results Found.", null, {
