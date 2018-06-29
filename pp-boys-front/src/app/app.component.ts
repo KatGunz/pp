@@ -39,11 +39,7 @@ export class AppComponent implements OnInit{
   private passResults(healthyFoods: FoodDTO[]): void {
     if(healthyFoods){
       this.healthyFoods = healthyFoods;
-      var isFull = this.dataService.assignToNavFoodResultCubby(healthyFoods);
-      if(isFull){
-        console.log("Cubby was full!");
-        return;
-      }
+      this.dataService.assignToFoodResultCubby(healthyFoods);
       this.router.navigate([`suggested-foods/${this.searchQuery}`]);
     }
     else{
