@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
   private passResults(healthyFoods: FoodDTO[]): void {
     if(this.router.url === 'suggested-foods'){
       //TODO: fix this line
-      this.child.healthyFoods = healthyFoods;
+      console.log("TEST");
     }else{
       if(healthyFoods){
         this.healthyFoods = healthyFoods;
