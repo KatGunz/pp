@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FoodDTO } from '../../domain/Food';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -9,16 +9,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class FoodService {
 
-  constructor(
-    private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-
-  private hostAndPort = 'http://localhost:8080/'
-  private foodEndpointBaseUrl = 'api/foodLookup/'
+  private hostAndPort = 'http://localhost:8080/';
+  private foodEndpointBaseUrl = 'api/foodLookup/';
   private knownFoodsEndpoint = 'knownFoods';
-  private findFoodEndpoint = 'findFood/'
+  private findFoodEndpoint = 'findFood/';
   getFoods(): Observable<FoodDTO[]> {
-    // return of(FOODS);
     return this.http.get<FoodDTO[]>(this.hostAndPort + this.foodEndpointBaseUrl + this.knownFoodsEndpoint);
   }
   getFoodByName(foodName: String): Observable<FoodDTO> {
