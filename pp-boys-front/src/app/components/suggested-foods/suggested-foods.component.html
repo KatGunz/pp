@@ -1,9 +1,10 @@
-<table mat-table [dataSource]="this.dataSource">
+<table mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="foodName">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Food </th>
       <td mat-cell *matCellDef="let food">
         <a routerLink="/food-details/{{food.foodName}}" > 
           {{food.foodName}}
+          <br>
         </a>
       </td>
   </ng-container>

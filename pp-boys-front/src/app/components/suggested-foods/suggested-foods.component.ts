@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FoodDTO } from '../../domain/Food';
 import { Location } from '@angular/common';
 import { DataService } from '../../services/services.data/data.service';
@@ -14,6 +14,7 @@ export class SuggestedFoodsComponent implements OnInit {
   // dataSource = new MatTableDataSource();
   dataSource: MatTableDataSource<FoodDTO>;
   foodNameColumn = ['foodName', 'calories', 'totalCarbs', 'totalFat'];
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private location: Location,
@@ -23,6 +24,7 @@ export class SuggestedFoodsComponent implements OnInit {
   ngOnInit() {
     this.healthyFoods = this.dataService.readFoodResultCubby();
     this.dataSource = new MatTableDataSource(this.healthyFoods);
+    this.dataSource.sort = this.sort;
   }
   goBack():void{
     this.location.back();
