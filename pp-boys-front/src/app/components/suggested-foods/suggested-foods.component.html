@@ -1,27 +1,29 @@
-<table mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8">
-  <ng-container matColumnDef="foodName">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Food </th>
-      <td mat-cell *matCellDef="let food">
-        <a routerLink="/food-details/{{food.foodName}}" > 
-          {{food.foodName}}
-          <br>
-        </a>
-      </td>
-  </ng-container>
-  <ng-container matColumnDef="calories">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Calories </th>
-    <td mat-cell *matCellDef="let food"> {{food.calories}} </td>
-  </ng-container>
-  <ng-container matColumnDef="totalCarbs">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Carbs </th>
-    <td mat-cell *matCellDef="let food"> {{food.totalCarbs}} </td>
-  </ng-container>
-  <ng-container matColumnDef="totalFat">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Fat </th>
-    <td mat-cell *matCellDef="let food"> {{food.totalFat}} </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="foodNameColumn"></tr>
-  <tr mat-row *matRowDef="let row; columns: foodNameColumn;"></tr>
-</table>
-
+<div class ="mat-elevation-z8">
+  <table mat-table [dataSource]="this.dataSource" matSort>
+    <ng-container matColumnDef="foodName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Food </th>
+        <td mat-cell *matCellDef="let food">
+          <a routerLink="/food-details/{{food.foodName}}" > 
+            {{food.foodName}}
+            <br>
+          </a>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="calories">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Calories </th>
+      <td mat-cell *matCellDef="let food"> {{food.calories}} </td>
+    </ng-container>
+    <ng-container matColumnDef="totalCarbs">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Carbs </th>
+      <td mat-cell *matCellDef="let food"> {{food.totalCarbs}} </td>
+    </ng-container>
+    <ng-container matColumnDef="totalFat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Fat </th>
+      <td mat-cell *matCellDef="let food"> {{food.totalFat}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="foodNameColumn"></tr>
+    <tr mat-row *matRowDef="let row; columns: foodNameColumn;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
 <button (click) = "goBack()">Back</button>

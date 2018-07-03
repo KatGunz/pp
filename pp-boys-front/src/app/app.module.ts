@@ -7,6 +7,9 @@ import { AppRoutingModule } from './routing/app-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort'
+import { MatPaginatorModule } from '@angular/material/paginator'
+
 
 import { AppComponent } from './app.component';
 import { FoodsComponent } from './components/foods/foods.component';
@@ -30,7 +33,9 @@ import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-
     HttpClientModule,
     MatSnackBarModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FoodDTO } from '../../domain/Food';
 import { Location } from '@angular/common';
 import { DataService } from '../../services/services.data/data.service';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-suggested-foods',
@@ -15,6 +15,7 @@ export class SuggestedFoodsComponent implements OnInit {
   dataSource: MatTableDataSource<FoodDTO>;
   foodNameColumn = ['foodName', 'calories', 'totalCarbs', 'totalFat'];
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private location: Location,
@@ -25,6 +26,7 @@ export class SuggestedFoodsComponent implements OnInit {
     this.healthyFoods = this.dataService.readFoodResultCubby();
     this.dataSource = new MatTableDataSource(this.healthyFoods);
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
   goBack():void{
     this.location.back();

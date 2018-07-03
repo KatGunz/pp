@@ -1,11 +1,8 @@
-table {
+.mat-elevation-z8 {
     width: 66.66%;
     margin-right: auto;
     margin-left: auto;
 }
-#yoYoMa {
-    text-align: middle;
-}
-th.mat-sort-header-sorted {
-    color: black;
+table {
+    width: 100%;
 }
