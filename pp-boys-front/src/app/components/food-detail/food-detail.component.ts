@@ -26,19 +26,20 @@ export class FoodDetailComponent implements OnInit {
 
   ngOnInit() {
     this.initFoodByName();
-    this.makeKeyValuePairingArrayFromFoodDTO(this.food);
   }
   initFoodByName():void{
     const foodName = this.route.snapshot.paramMap.get('foodName');
     this.foodService.getFoodByName(foodName)
       .subscribe(food => this.assignFood(food));
   }
-  makeKeyValuePairingArrayFromFoodDTO(foodDTO: FoodDTO): void{
+  makeKeyValuePairingArrayFromFoodDTO(): void{
+    console.log(this.food.foodName);
     this.foodDetails= this.foodDetailService.makeKeyValuePairingArrayFromFoodDTO(this.food);
   }
 
   private assignFood(food: FoodDTO): void{
     this.food = food;
+    this.makeKeyValuePairingArrayFromFoodDTO();
   }
   goBack():void{
     this.location.back();

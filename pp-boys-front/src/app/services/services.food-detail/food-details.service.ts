@@ -14,6 +14,7 @@ export class FoodDetailsService {
   makeKeyValuePairingArrayFromFoodDTO(foodDTO: FoodDTO): KeyValuePairing[]{
     var keyValuePairingArray = new Array<KeyValuePairing>();
     for(var key in foodDTO){
+      if(key==="foodName"){continue;}
       var keyValuePairing: KeyValuePairing = new KeyValuePairing(key, foodDTO[key]+"");
       keyValuePairingArray.push(keyValuePairing);
     }

@@ -4,7 +4,10 @@
   <!-- <div><span>id: </span>{{food.id}}</div> -->
   <div>
     <ul style="list-style-type:none">
-      <li *ngFor="let number of food"
+      <li *ngFor="let keyValuePairing of foodDetails">
+        <span>{{keyValuePairing.property}}</span> 
+        <span>{{keyValuePairing.value}}</span>
+      </li>
     </ul>
   </div>
   <button (click)="goBack()">go back</button>
