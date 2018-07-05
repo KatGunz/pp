@@ -40,6 +40,8 @@ export class AppComponent implements OnInit{
     if(this.router.url === 'suggested-foods'){
       //TODO: fix this line
       console.log("TEST");
+      this.healthyFoods = healthyFoods;
+      this.dataService.assignToFoodResultCubby(healthyFoods);
     }else{
       if(healthyFoods){
         this.healthyFoods = healthyFoods;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, DoCheck } from '@angular/core';
 import { FoodDTO } from '../../domain/Food';
 import { Location } from '@angular/common';
 import { DataService } from '../../services/services.data/data.service';
@@ -27,6 +27,12 @@ export class SuggestedFoodsComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.healthyFoods);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+  ngDoCheck(){
+    if(this.healthyFoods!==this.dataService.readFoodResultCubby()){
+      this.healthyFoods = this.dataService.readFoodResultCubby();
+      this.dataSource = new MatTableDataSource(this.healthyFoods);
+    }
   }
   goBack():void{
     this.location.back();
