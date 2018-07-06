@@ -3,6 +3,8 @@ import { FoodDTO } from '../../domain/Food';
 import { Location } from '@angular/common';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { FoodService } from '../../services/services.food/food.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-suggested-foods',
@@ -11,27 +13,36 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SuggestedFoodsComponent implements OnInit {
   healthyFoods: FoodDTO[];
-  // dataSource = new MatTableDataSource();
-  dataSource: MatTableDataSource<FoodDTO>;
+  //dataSource: MatTableDataSource<FoodDTO>;
   foodNameColumn = ['foodName', 'calories', 'totalCarbs', 'totalFat'];
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatSort) sort: MatSort;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private foodService: FoodService,
+    private matSnackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.healthyFoods);
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-  ngDoCheck(){
-    console.log("Current route: "+ this.route.snapshot.url);
-    this.dataSource = new MatTableDataSource(this.healthyFoods);
+    // this.foodService.suggestFoods(this.route.snapshot.paramMap.get('searchQuery'))
+    //   .subscribe(healthyFoods => this.initFoodSuggestions(healthyFoods));
   }
   goBack():void{
     this.location.back();
   }
+
+  // initFoodSuggestions(healthyFoods: FoodDTO[]):void{
+  //   this.healthyFoods = healthyFoods;
+  //   console.log("hello");
+  //   if(!healthyFoods){
+  //     this.matSnackBar.open("No Results Found","",{duration:3000});
+  //     return;
+  //   }
+  //   // this.dataSource = new MatTableDataSource(this.healthyFoods);
+  //   // this.dataSource.sort = this.sort;
+  //   // this.dataSource.paginator = this.paginator;
+  // }
+
 }
