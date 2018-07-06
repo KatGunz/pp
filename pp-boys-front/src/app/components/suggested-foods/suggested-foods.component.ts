@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, DoCheck } from '@angular/core';
 import { FoodDTO } from '../../domain/Food';
 import { Location } from '@angular/common';
-import { DataService } from '../../services/services.data/data.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-suggested-foods',
@@ -19,20 +19,17 @@ export class SuggestedFoodsComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private dataService: DataService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.healthyFoods = this.dataService.readFoodResultCubby();
     this.dataSource = new MatTableDataSource(this.healthyFoods);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
   ngDoCheck(){
-    if(this.healthyFoods!==this.dataService.readFoodResultCubby()){
-      this.healthyFoods = this.dataService.readFoodResultCubby();
-      this.dataSource = new MatTableDataSource(this.healthyFoods);
-    }
+    console.log("Current route: "+ this.route.snapshot.url);
+    this.dataSource = new MatTableDataSource(this.healthyFoods);
   }
   goBack():void{
     this.location.back();
