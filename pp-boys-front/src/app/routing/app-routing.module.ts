@@ -5,13 +5,15 @@ import { FoodsComponent } from '../components/foods/foods.component';
 import { DashboardComponent }   from '../components/dashboard/dashboard.component';
 import { FoodDetailComponent } from '../components/food-detail/food-detail.component'
 import { SuggestedFoodsComponent } from '../components/suggested-foods/suggested-foods.component';
+import { NoResultsComponent } from '../components/no-results/no-results.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'foods', component: FoodsComponent },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'food-details/:foodName', component: FoodDetailComponent},
-  { path: 'suggested-foods/:searchQuery', component: SuggestedFoodsComponent}
+  { path: 'suggested-foods/:searchQuery', component: SuggestedFoodsComponent},
+  { path: 'no-results', component: NoResultsComponent}
 ];
 
 @NgModule({

@@ -2,10 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FoodDTO } from '../../domain/Food';
 import { Location } from '@angular/common';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FoodService } from '../../services/services.food/food.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-suggested-foods',
@@ -41,8 +40,8 @@ export class SuggestedFoodsComponent implements OnInit {
   initFoodSuggestions(healthyFoods: FoodDTO[]):void{
     this.healthyFoods = healthyFoods;
     if(!healthyFoods){
-      console.log("here")
       this.matSnackBar.open("No Results Found","",{duration:3000});
+      this.router.navigate([`no-results`]);
       return;
     }
     this.dataSource = new MatTableDataSource(this.healthyFoods);

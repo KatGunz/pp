@@ -16,6 +16,7 @@ import { FoodsComponent } from './components/foods/foods.component';
 import { FoodDetailComponent } from './components/food-detail/food-detail.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-foods.component';
+import { NoResultsComponent } from './components/no-results/no-results.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-
     FoodsComponent,
     FoodDetailComponent,
     DashboardComponent,
-    SuggestedFoodsComponent
+    SuggestedFoodsComponent,
+    NoResultsComponent
   ],
   imports: [
     BrowserModule,
