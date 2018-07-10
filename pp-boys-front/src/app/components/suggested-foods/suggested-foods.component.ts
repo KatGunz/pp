@@ -13,7 +13,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./suggested-foods.component.css']
 })
 export class SuggestedFoodsComponent implements OnInit, OnDestroy {
-  healthyFoods: FoodDTO[];
   dataSource: MatTableDataSource<FoodDTO>;
   foodNameColumn = ['foodName', 'calories', 'totalCarbs', 'totalFat'];
   @ViewChild(MatSort) sort: MatSort;
@@ -38,17 +37,19 @@ export class SuggestedFoodsComponent implements OnInit, OnDestroy {
     this.location.back();
   }
   setFoodSuggestions(){
+    console.log(this.route.snapshot.paramMap.get('searchQuery'));
     this.foodService.suggestFoods(this.route.snapshot.paramMap.get('searchQuery'))
       .subscribe(healthyFoods => this.initFoodSuggestions(healthyFoods));
   }
   initFoodSuggestions(healthyFoods: FoodDTO[]):void{
-    this.healthyFoods = healthyFoods;
     if(!healthyFoods){
       this.matSnackBar.open("No Results Found","",{duration:3000});
-      this.router.navigate([`no-results`]);
-      return;
+      healthyFoods = [];
     }
-    this.dataSource = new MatTableDataSource(this.healthyFoods);
+    this.initDataSource(healthyFoods);
+  }
+  initDataSource(healthyFoods: FoodDTO[]): void{
+    this.dataSource = new MatTableDataSource(healthyFoods);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
