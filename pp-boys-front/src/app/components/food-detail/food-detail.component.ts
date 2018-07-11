@@ -33,7 +33,6 @@ export class FoodDetailComponent implements OnInit {
       .subscribe(food => this.assignFood(food));
   }
   makeKeyValuePairingArrayFromFoodDTO(): void{
-    console.log(this.food.foodName);
     this.foodDetails= this.foodDetailService.makeKeyValuePairingArrayFromFoodDTO(this.food);
   }
 

@@ -23,12 +23,14 @@ export class SuggestedFoodsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private foodService: FoodService,
     private matSnackBar: MatSnackBar,
-    private router: Router
-  ) {}
+    private router: Router,
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
     this.setFoodSuggestions();
-    this.subscription = this.router.events.subscribe((event)=>this.handleRouteChange);
+    this.subscription = this.router.events.subscribe((event)=>this.setFoodSuggestions);
   }
   ngOnDestroy(){
     this.subscription.unsubscribe();
@@ -48,15 +50,14 @@ export class SuggestedFoodsComponent implements OnInit, OnDestroy {
     var searchQuery = this.route.snapshot.paramMap.get('searchQuery');
     console.log(searchQuery);
     this.foodService.suggestFoods(searchQuery)
-      .subscribe(healthyFoods => this.initFoodSuggestions(healthyFoods, searchQuery));
+      .subscribe(healthyFoods => this.initFoodSuggestions(healthyFoods));
   }
-  initFoodSuggestions(healthyFoods: FoodDTO[], searchQuery):void{
+  initFoodSuggestions(healthyFoods: FoodDTO[]):void{
     if(!healthyFoods){
       this.matSnackBar.open("No Results Found","",{duration:3000});
       healthyFoods = [];
     }
     this.initDataSource(healthyFoods);
-    this.router.navigate([`suggested-foods/${searchQuery}`]);
   }
   initDataSource(healthyFoods: FoodDTO[]): void{
     this.dataSource = new MatTableDataSource(healthyFoods);
