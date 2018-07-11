@@ -12,17 +12,21 @@ const routes: Routes = [
   { path: 'foods', component: FoodsComponent },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'food-details/:foodName', component: FoodDetailComponent},
-  { path: 'suggested-foods/:searchQuery', component: SuggestedFoodsComponent},
+  { 
+    path: 'suggested-foods/:searchQuery', 
+    component: SuggestedFoodsComponent,
+    runGuardsAndResolvers: 'always',
+  },
   { path: 'no-results', component: NoResultsComponent}
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ],
   declarations: []
 })

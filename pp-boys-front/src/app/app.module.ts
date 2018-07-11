@@ -17,6 +17,7 @@ import { FoodDetailComponent } from './components/food-detail/food-detail.compon
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-foods.component';
 import { NoResultsComponent } from './components/no-results/no-results.component';
+import { RouterModule } from '../../node_modules/@angular/router';
 
 @NgModule({
   declarations: [

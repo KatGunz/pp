@@ -28,7 +28,7 @@ export class SuggestedFoodsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.setFoodSuggestions();
-    this.subscription = this.router.events.subscribe((event)=>this.setFoodSuggestions);
+    this.subscription = this.router.events.subscribe((event)=>this.handleRouteChange);
   }
   ngOnDestroy(){
     this.subscription.unsubscribe();
@@ -37,16 +37,12 @@ export class SuggestedFoodsComponent implements OnInit, OnDestroy {
     this.location.back();
   }
   handleRouteChange(event: Event):void{
-    this.setFoodSuggestions
-    // if(event instanceof NavigationStart){
-    //   this.setFoodSuggestions
-    // }else if (event instanceof NavigationEnd){
-    //   this.setFoodSuggestions
-    // } else if(event instanceof NavigationError){
-    //   this.setFoodSuggestions
-    // } else if(event instanceof NavigationCancel){
-    //   this.setFoodSuggestions
-    // }
+    if(event instanceof NavigationStart){
+    }else if (event instanceof NavigationEnd){
+      this.setFoodSuggestions
+    } else if(event instanceof NavigationError){
+    } else if(event instanceof NavigationCancel){
+    }
   }
   setFoodSuggestions(){
     var searchQuery = this.route.snapshot.paramMap.get('searchQuery');
