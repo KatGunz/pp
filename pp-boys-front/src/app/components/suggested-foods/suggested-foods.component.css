@@ -6,3 +6,7 @@
 table {
     width: 100%;
 }
+#ghost {
+    color: white;
+    margin-left: -100%;
+}

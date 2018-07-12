@@ -7,18 +7,18 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link text-light" routerLink="/dashboard">
-            <i class="material-icons">home</i>
+            <i class="material-icons" title="Home">home</i>
           </a>
         </li>
         <li class="nav-item active">
           <a class="nav-link text-light" routerLink="/foods">
-            <i class="material-icons">local_dining</i>
+            <i class="material-icons" title="Food List">local_dining</i>
           </a>
         </li>
       </ul>
       <form #f="ngForm" (ngSubmit)="onSubmit(searchQuery.value)" class="form-inline my-2 my-lg-0 navbar-form-search">
         <input class="form-control search-form-container" type="search" #searchQuery placeholder="Search" aria-label="Search">
-        <button mat-raised-button>
+        <button mat-raised-button title="Search">
           <i class="material-icons">search</i>
         </button>
       </form>
