@@ -5,7 +5,6 @@ import { FoodDTO } from '../../domain/Food';
 import { KeyValuePairing } from '../../domain/KeyValuePairing';
 import { FoodService } from '../../services/services.food/food.service';
 import { FoodDetailsService } from '../../services/services.food-detail/food-details.service';
-import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-food-detail',

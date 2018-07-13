@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort'
 import { MatPaginatorModule } from '@angular/material/paginator'
-
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { FoodsComponent } from './components/foods/foods.component';
@@ -17,7 +17,6 @@ import { FoodDetailComponent } from './components/food-detail/food-detail.compon
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SuggestedFoodsComponent } from './components/suggested-foods/suggested-foods.component';
 import { NoResultsComponent } from './components/no-results/no-results.component';
-import { RouterModule } from '../../node_modules/@angular/router';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,8 @@ import { RouterModule } from '../../node_modules/@angular/router';
     MatButtonModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 /* HeroDetailComponent's private CSS styles */
-label {
+/* label {
     display: inline-block;
     width: 6em;
     margin: .5em 1;
@@ -37,4 +37,12 @@ ul{
 
 span{
   padding-left: 3em;
+}
+ */
+#property {
+  width: 10em;
+}
+#value {
+  margin-left: 1em;
+  text-align: center;
 }
