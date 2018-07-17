@@ -1,21 +1,14 @@
 <div *ngIf="food">
 
   <h2>{{ food.foodName }} Details</h2>
-  <!-- <div><span>id: </span>{{food.id}}</div> -->
   <div>
-    <!-- <ul style="list-style-type:none">
-      <li *ngFor="let keyValuePairing of foodDetails">
-        <span>{{keyValuePairing.property}}</span> 
-        <span>{{keyValuePairing.value}}</span>
-      </li>
-    </ul> -->
     <mat-list class = "list">
       <mat-list-item *ngFor="let keyValuePairing of foodDetails">
         <div id = "property">{{keyValuePairing.property}}</div>
-        <div id = "value">{{keyValuePairing.value}}</div>
+        <div id = "value">{{keyValuePairing.value}} g</div>
       </mat-list-item>
       <span><br></span>
     </mat-list>
   </div>
-  <button (click)="goBack()">go back</button>
+  <button mat-raised-button (click)="goBack()">Back</button>
 </div>

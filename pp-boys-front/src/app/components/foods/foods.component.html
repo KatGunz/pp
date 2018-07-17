@@ -1,13 +1,3 @@
-<!-- <h2>My Foods</h2>
-<ul class="foods">
-  <li *ngFor="let food of foods">
-    <a routerLink="/food-details/{{food.foodName}}" >
-      <span class="badge">{{food.foodName}}</span>
-    </a>
-  </li>
-</ul>
-<button (click) = "goBack()">Back</button> -->
-
 <h2> All Foods</h2>
 <mat-nav-list class = "list">
   <a mat-list-item routerLink="/food-details/{{food.foodName}}" *ngFor="let food of foods" >{{food.foodName}}</a>

@@ -1,48 +1,20 @@
-/* HeroDetailComponent's private CSS styles */
-/* label {
-    display: inline-block;
-    width: 6em;
-    margin: .5em 1;
-    color: #607D8B;
-    font-weight: bold;
-    padding: 1em;
+h2 {
+  padding-left: 1.5em;
+  padding-top: 1em;
 }
-input {
-  height: 2em;
-  font-size: 1em;
-  padding-left: .4em;
+mat-list-item {
+  margin-left: 3em;
+  background-color: rgb(243, 243, 243);
+  width: 18%;
+
 }
 button {
-  margin-top: 20px;
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer; cursor: hand;
+  margin-left: 3.5em;
+  background-color: #89b6d64d;
 }
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
-}
-
-ul{
-  display:table; 
-  margin:0 auto;
-}
-
-span{
-  padding-left: 3em;
-}
- */
 #property {
   width: 10em;
 }
 #value {
-  margin-left: 1em;
-  text-align: center;
+  margin-left: auto;
 }
