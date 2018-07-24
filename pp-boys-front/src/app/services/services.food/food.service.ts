@@ -11,7 +11,7 @@ export class FoodService {
 
   constructor(private http: HttpClient) {}
 
-  private hostAndPort = 'http://localhost:8080/';
+  private hostAndPort = 'http://localhost:8081/';
   private foodEndpointBaseUrl = 'api/foodLookup/';
   private knownFoodsEndpoint = 'knownFoods';
   private findFoodEndpoint = 'findFood/';
