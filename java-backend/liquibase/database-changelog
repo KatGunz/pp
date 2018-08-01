@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <preConditions>
+        <runningAs username="${username}"/>
+    </preConditions>
+
+
+    <changeSet id="0" author="anon">
+        <sqlFile path="sql-scripts/MakePP.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="1" author="anon">
+        <sqlFile path="sql-scripts/FOOD.sql"
+                relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="2" author="anon">
+        <sqlFile path="sql-scripts/BRAND.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="3" author="anon">
+        <sqlFile path="sql-scripts/FOODTOBRAND.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="4" author="anon">
+        <sqlFile path="sql-scripts/UNHEALTHYTOHEALTHY.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+</databaseChangeLog>
