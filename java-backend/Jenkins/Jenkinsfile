@@ -1,0 +1,37 @@
+pipeline {
+    agent { any }
+    stages {
+        stage('Git Clone') {
+            steps {
+                git credentialsId: 'github-creds', url: 'https://github.com/KatGunz/pp.git'
+            }
+        }
+        stage('Sql Updates') {
+            steps {
+                echo 'mvn liquibase:update'
+            }
+        }
+        stage('Testing')  {
+            steps {
+                sh 'mvn compile'
+                sh 'mvn test'
+                echo 'mvn integration-test'
+            }
+        }
+        stage('SonarQube Scan'){
+            steps {
+                echo 'scan sonarqube'
+            }
+        }
+        stage('Build Image')(
+            steps {
+                echo 'docker build . '
+            }
+        )
+        stage('Deploy') {
+            steps{
+                echo 'some google cloud console command here'
+            }
+        }
+    }
+}
