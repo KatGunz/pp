@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent any
     stages {
         stage('Git Clone') {
             steps {
@@ -23,11 +23,11 @@ pipeline {
                 echo 'scan sonarqube'
             }
         }
-        stage('Build Image')(
+        stage('Build Image'){
             steps {
                 echo 'docker build . '
             }
-        )
+        }
         stage('Deploy') {
             steps{
                 echo 'some google cloud console command here'
